@@ -7,11 +7,11 @@ import { Homework } from './pages/Homework'
 export function Router() {
   return (
     <Routes>
-      <Route path="/" element={<DefaultLayout />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/absence" element={<Absence />} />
-      <Route path="/homework" element={<Homework />} />
-      console.log(7)
+      <Route path="/" element={<DefaultLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/absence" element={<Absence />} />
+        <Route path="/homework" element={<Homework />} />
+      </Route>
     </Routes>
   )
 }

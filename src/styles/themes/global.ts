@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 
-/* :focus{
+:focus{
     outline: 0;
     box-shadow: 0 0 0 2px ${(props) => props.theme['blue-light']};
 }
@@ -18,10 +18,11 @@ body{
     overflow-y: scroll;
 }
 
-body, input, textarea, button{
+body, input, textarea, button, a{
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+    color: #fff;
 }
 
 a{
@@ -32,5 +33,5 @@ a{
     html{
         font-size: 87.5%;
     }
-} */
+}
 `
