@@ -3,8 +3,9 @@ export const defaultTheme = {
   'black-light': '#303030',
   'blue-light': '#00D1FF',
   'blue-dark': '#0092B3',
-  green: '#10C500',
-  'red-light': '#FF4D4D',
-  'red-dark': '#FF0000',
+  'green-light': '#00ff00',
+  'green-dark': '#04bc00',
+  'red-light': '#FF0000',
+  'red-dark': '#C20000',
   white: '#fff',
 }
