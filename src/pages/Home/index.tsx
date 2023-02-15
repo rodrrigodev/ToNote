@@ -1,6 +1,8 @@
 import {
+  Grades,
   GradesAndWarningsContainer,
-  TableGradesContainer,
+  GradesInfoContainer,
+  WarningItens,
   WarningsContainer,
 } from './styles'
 import { Warning } from 'phosphor-react'
@@ -10,58 +12,51 @@ export function Home() {
   const theme = useTheme()
   return (
     <GradesAndWarningsContainer>
-      <TableGradesContainer>
-        <tr>
-          <th>Matéria</th>
-          <th>N1</th>
-          <th>N2</th>
-          <th>N3</th>
-          <th>N4</th>
-          <th>Média</th>
-        </tr>
+      <GradesInfoContainer>
+        <div>
+          <span>Matéria</span>
+          <span>N1</span>
+          <span>N2</span>
+          <span>N3</span>
+          <span>N4</span>
+          <span>Média</span>
+        </div>
 
-        <tr>
-          <td>Potuguês</td>
-          <td>8</td>
-          <td>7</td>
-          <td>5</td>
-          <td>9</td>
-          <td>7</td>
-        </tr>
+        <div>
+          <div>
+            <Grades variant="black">Matemática</Grades>
+            <Grades variant="bad">4</Grades>
+            <Grades variant="good">7</Grades>
+            <Grades variant="good">8</Grades>
+            <Grades variant="good">7</Grades>
+            <Grades variant="good">9</Grades>
+          </div>
 
-        <tr>
-          <td>Matemática</td>
-          <td>8</td>
-          <td>7</td>
-          <td>5</td>
-          <td>9</td>
-          <td>7</td>
-        </tr>
-
-        <tr>
-          <td>Inglês</td>
-          <td>8</td>
-          <td>7</td>
-          <td>5</td>
-          <td>9</td>
-          <td>7</td>
-        </tr>
-      </TableGradesContainer>
+          <div>
+            <Grades variant="black">Português</Grades>
+            <Grades variant="bad">4</Grades>
+            <Grades variant="good">7</Grades>
+            <Grades variant="good">8</Grades>
+            <Grades variant="good">7</Grades>
+            <Grades variant="good">9</Grades>
+          </div>
+        </div>
+      </GradesInfoContainer>
 
       <WarningsContainer>
         <strong>
           <Warning size={32} color={theme['red-light']} /> Avisos
         </strong>
 
-        <div>
+        <WarningItens variant="good">
           <span>Impactos Ambientais</span>
           <span>14 Dias Restantes</span>
-        </div>
+        </WarningItens>
 
-        <div>
+        <WarningItens variant="bad">
           <span>Processo de evolução</span>
           <span>6 Dias Restantes</span>
-        </div>
+        </WarningItens>
       </WarningsContainer>
     </GradesAndWarningsContainer>
   )

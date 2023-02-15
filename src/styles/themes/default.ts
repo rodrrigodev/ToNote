@@ -6,5 +6,5 @@ export const defaultTheme = {
   green: '#10C500',
   'red-light': '#FF4D4D',
   'red-dark': '#FF0000',
-  white: '#fffff',
+  white: '#fff',
 }
