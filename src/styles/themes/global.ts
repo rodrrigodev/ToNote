@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: 0 0 0 2px ${(props) => props.theme['blue-light']};
 }
 body{
-    background-color: ${(porps) => porps.theme['black-light']};
+    background-color: ${(porps) => porps.theme.background};
     color: ${(porps) => porps.theme.white};
     -webkit-font-smoothing: antialiased;
     overflow-y: scroll;

@@ -3,7 +3,13 @@ import styled from 'styled-components'
 export const HomeworkContainer = styled.main`
   max-width: 90rem;
   width: 90%;
-  margin: 6.5rem auto 0 auto;
+  margin: 6.5rem auto 2rem auto;
+
+  &::after {
+    content: 'Obs: click em cima do tema do trabalho finalizado!';
+    margin-top: 1rem;
+    display: block;
+  }
 `
 
 export const HomeworkDataAndLinksContainer = styled.div`
@@ -39,6 +45,7 @@ export const SearchBoxContainer = styled.div`
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 1.75rem;
+    cursor: pointer;
 
     display: flex;
     align-items: center;
@@ -72,6 +79,9 @@ export const HomeworkDataContainer = styled.div`
   button {
     padding: 0.625rem 2.5rem;
     font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+
     border: 1px solid transparent;
     border-radius: 6px;
     line-height: 1.75rem;
@@ -109,14 +119,77 @@ export const HomeworkDataContainer = styled.div`
   }
 `
 
-export const HomeworkLinksContainer = styled.aside`
-  background-color: ${(props) => props.theme.black};
-  padding: 2.5rem;
-  border-radius: 6px;
-`
-
 interface HomeworkToFinishProps {
   variant: 'finished' | 'notFinished'
 }
 
-export const HomeworkToFinish = styled.div<HomeworkToFinishProps>``
+export const HomeworkToFinish = styled.div<HomeworkToFinishProps>`
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  padding: 1.0625rem;
+  background-color: ${(props) => props.theme.background};
+  border: 1px solid
+    ${(props) =>
+      props.variant === 'finished'
+        ? props.theme['blue-light']
+        : props.theme['red-light']};
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+
+  span {
+  }
+
+  button {
+    padding: 0;
+    line-height: 0;
+    margin: 0;
+    background-color: transparent;
+    color: ${(props) => props.theme['red-dark']};
+    cursor: pointer;
+
+    &:hover {
+      color: ${(props) => props.theme['red-light']};
+      background-color: transparent;
+    }
+  }
+`
+
+export const HomeworkLinksContainer = styled.aside`
+  background-color: ${(props) => props.theme.black};
+  padding: 2.5rem;
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+      font-weight: 500;
+      color: ${(props) => props.theme['black-light']};
+
+      &:hover {
+        color: ${(props) => props.theme.white};
+      }
+    }
+  }
+`

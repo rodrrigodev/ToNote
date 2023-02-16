@@ -1,4 +1,5 @@
 import { MagnifyingGlass, Planet, Trash } from 'phosphor-react'
+import { useTheme } from 'styled-components'
 import {
   HomeworkDataContainer,
   HomeworkContainer,
@@ -9,6 +10,8 @@ import {
 } from './styles'
 
 export function Homework() {
+  const theme = useTheme()
+
   return (
     <HomeworkContainer>
       <SearchBoxContainer>
@@ -29,26 +32,32 @@ export function Homework() {
 
           <HomeworkToFinish variant="finished">
             <span>Historia</span>
-            <span>II Guerra Mundial</span>
-            <span>14 Dias Restantes</span>
-            <span>
-              <Trash size={32} />
+            <span
+              onClick={() => {
+                console.log('Funciona')
+              }}
+            >
+              II Guerra Mundial
             </span>
+            <span>14 Dias Restantes</span>
+            <button type="button">
+              <Trash size={32} />
+            </button>
           </HomeworkToFinish>
 
           <HomeworkToFinish variant="notFinished">
             <span>Geografia</span>
             <span>Poluição Oceanica</span>
             <span>4 Dias Restantes</span>
-            <span>
+            <button type="button">
               <Trash size={32} />
-            </span>
+            </button>
           </HomeworkToFinish>
         </HomeworkDataContainer>
 
         <HomeworkLinksContainer>
           <span>
-            <Planet size={32} />
+            <Planet size={32} color={theme['blue-light']} />
             Links Úteis
           </span>
 
