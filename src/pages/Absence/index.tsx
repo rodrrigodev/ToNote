@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components'
 import {
   AbscenceContainer,
   AbscenceIncreseDecrease,
+  AddBtn,
   IncreseAndDecrease,
   TotalAbscence,
 } from './styles'
@@ -19,32 +20,35 @@ export function Absence() {
         </strong>
 
         <IncreseAndDecrease>
-          <span>Português</span>
+          <span>Português:</span>
 
           <div>
             <button>
               <Plus size={32} />
             </button>
 
-            <input type="number" />
+            <input type="number" value={2} />
 
             <button>
               <Minus size={32} />
             </button>
           </div>
 
-          <button type="button">Adicionar</button>
+          <AddBtn type="button">Adicionar</AddBtn>
         </IncreseAndDecrease>
       </AbscenceIncreseDecrease>
 
-      <div>
-        <TotalAbscence>
+      <TotalAbscence>
+        <div>
           <span>Total</span>
           <span>15</span>
-        </TotalAbscence>
+        </div>
 
-        <span>15 Faltas</span>
-      </div>
+        <div>
+          <span>15</span>
+          <span>Faltas</span>
+        </div>
+      </TotalAbscence>
     </AbscenceContainer>
   )
 }

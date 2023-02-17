@@ -139,9 +139,6 @@ export const HomeworkToFinish = styled.div<HomeworkToFinishProps>`
   display: flex;
   align-items: center;
 
-  span {
-  }
-
   button {
     padding: 0;
     line-height: 0;
@@ -172,7 +169,8 @@ export const HomeworkLinksContainer = styled.aside`
     gap: 0.5rem;
     font-size: 1.5rem;
     line-height: 1.75rem;
-    margin-bottom: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
   }
 
   div {

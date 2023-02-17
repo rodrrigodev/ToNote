@@ -72,14 +72,15 @@ export const WarningsContainer = styled.div`
   width: 40%;
 
   strong {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.5rem;
-    line-height: 1.875rem;
+    line-height: 1.75rem;
     margin-bottom: 1.5rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
   }
 `
 
@@ -92,7 +93,7 @@ export const WarningItens = styled.div<WarningItensProps>`
   font-size: 1.25rem;
   line-height: 1.4375rem;
 
-  background-color: ${(props) => props.theme['black-light']};
+  background-color: ${(props) => props.theme.background};
   padding: 1rem 0.5rem;
   border-radius: 6px;
   border: 1px solid
