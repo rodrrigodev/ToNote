@@ -39,3 +39,22 @@ export const NavContainer = styled.nav`
     }
   }
 `
+
+export const NewSchoolSubjectBtn = styled.button`
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.375rem;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: all 500ms;
+
+  &.active {
+    color: ${(props) => props.theme['blue-light']};
+  }
+
+  &:hover {
+    color: ${(props) => props.theme['blue-light']};
+    transition: all 500ms;
+  }
+`

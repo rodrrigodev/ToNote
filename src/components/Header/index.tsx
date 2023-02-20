@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
-import { HeaderContainer, NavContainer } from './styles'
+import { HeaderContainer, NavContainer, NewSchoolSubjectBtn } from './styles'
+import * as Dialog from '@radix-ui/react-dialog'
+import { NewSchoolSubjectModal } from '../NewSchoolSubjectModal'
 
 export function Header() {
   return (
@@ -14,10 +16,14 @@ export function Header() {
           <NavLink to="/absence" end title="Faltas">
             Faltas
           </NavLink>
-          <NavLink to="New">Nova Matéria</NavLink>
-          <NavLink to="/homework" end title="Trabalhos">
-            Trabalhos
-          </NavLink>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <NewSchoolSubjectBtn>Nova Matéria</NewSchoolSubjectBtn>
+            </Dialog.Trigger>
+
+            <NewSchoolSubjectModal />
+          </Dialog.Root>
+          <NavLink to="/homework">Trabalhos</NavLink>
         </NavContainer>
       </div>
     </HeaderContainer>
