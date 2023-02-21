@@ -7,6 +7,7 @@ import {
 } from './styles'
 import { Warning } from 'phosphor-react'
 import { useTheme } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export function Home() {
   const theme = useTheme()
@@ -41,6 +42,7 @@ export function Home() {
             <Grades variant="good">9</Grades>
           </div>
         </div>
+        <Link to="/edit">Editar</Link>
       </GradesInfoContainer>
 
       <WarningsContainer>

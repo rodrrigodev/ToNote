@@ -15,6 +15,7 @@ export const GradesInfoContainer = styled.div`
   width: 50%;
   padding: 2.5rem;
   border-radius: 6px;
+  position: relative;
 
   > div:first-child {
     display: flex;
@@ -49,6 +50,12 @@ export const GradesInfoContainer = styled.div`
     &:first-of-type {
       width: 7rem;
     }
+  }
+
+  a {
+    position: absolute;
+    right: 0.625rem;
+    bottom: 0.625rem;
   }
 `
 interface GradesProps {
