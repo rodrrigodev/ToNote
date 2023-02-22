@@ -13,10 +13,10 @@ export function Edit() {
         <SchoolGradesToEdit>
           <div>
             <span>Português</span>
-            <input type="number" placeholder="Nota 1" />
-            <input type="number" placeholder="Nota 2" />
-            <input type="number" placeholder="Nota 3" />
-            <input type="number" placeholder="Nota 4" />
+            <input type="number" placeholder="1º Nota" />
+            <input type="number" placeholder="2º Nota" />
+            <input type="number" placeholder="3º Nota" />
+            <input type="number" placeholder="4º Nota" />
           </div>
 
           <DeleteGradeBtn>
@@ -28,10 +28,10 @@ export function Edit() {
         <SchoolGradesToEdit>
           <div>
             <span>Português</span>
-            <input type="number" placeholder="Nota 1" />
-            <input type="number" placeholder="Nota 2" />
-            <input type="number" placeholder="Nota 3" />
-            <input type="number" placeholder="Nota 4" />
+            <input type="number" placeholder="1º Nota" />
+            <input type="number" placeholder="2º Nota" />
+            <input type="number" placeholder="3º Nota" />
+            <input type="number" placeholder="4º Nota" />
           </div>
 
           <DeleteGradeBtn>

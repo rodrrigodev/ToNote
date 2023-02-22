@@ -8,6 +8,8 @@ import {
   HomeworkLinksContainer,
   HomeworkToFinish,
 } from './styles'
+import * as Dialog from '@radix-ui/react-dialog'
+import { NewHomeworkModal } from './NewHomeworkModal'
 
 export function Homework() {
   const theme = useTheme()
@@ -25,7 +27,13 @@ export function Homework() {
       <HomeworkDataAndLinksContainer>
         <HomeworkDataContainer>
           <div>
-            <button type="button">Novo Trabalho</button>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <button type="button">Novo Trabalho</button>
+              </Dialog.Trigger>
+              <NewHomeworkModal />
+            </Dialog.Root>
+
             <button type="button">Pendentes</button>
             <button type="button">Finalizados</button>
           </div>

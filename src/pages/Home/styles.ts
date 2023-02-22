@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
-export const GradesAndWarningsContainer = styled.main`
+export const MainContainerBase = styled.main`
   max-width: 90rem;
   width: 90%;
   margin: 6.5rem auto 0 auto;
+`
 
+export const GradesAndWarningsContainer = styled(MainContainerBase)`
   display: flex;
   justify-content: space-between;
   gap: 3.75rem;

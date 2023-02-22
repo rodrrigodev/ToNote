@@ -1,10 +1,7 @@
 import styled from 'styled-components'
+import { MainContainerBase } from '../Home/styles'
 
-export const AbscenceContainer = styled.main`
-  max-width: 90rem;
-  width: 90%;
-  margin: 6.5rem auto 0 auto;
-
+export const AbscenceContainer = styled(MainContainerBase)`
   display: flex;
   justify-content: space-between;
   gap: 3.75rem;

@@ -1,10 +1,7 @@
 import styled from 'styled-components'
+import { MainContainerBase } from '../Home/styles'
 
-export const HomeworkContainer = styled.main`
-  max-width: 90rem;
-  width: 90%;
-  margin: 6.5rem auto 2rem auto;
-
+export const HomeworkContainer = styled(MainContainerBase)`
   &::after {
     content: 'Obs: click em cima do tema do trabalho finalizado!';
     margin-top: 1rem;
@@ -20,8 +17,7 @@ export const HomeworkDataAndLinksContainer = styled.div`
 `
 
 export const SearchBoxContainer = styled.div`
-  max-width: 50rem;
-  width: 100%;
+  width: 70%;
   display: flex;
   gap: 2rem;
 
