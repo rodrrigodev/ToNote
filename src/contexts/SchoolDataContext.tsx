@@ -4,10 +4,7 @@ interface SchoolData {
   id: number
   schoolSubjects: string
   schoolAbsence: number
-  n1?: number
-  n2?: number
-  n3?: number
-  n4?: number
+  grades: number[]
 }
 
 interface SchoolDataContextType {
@@ -28,10 +25,25 @@ export function SchoolDataContextProvider({
       id: 1,
       schoolSubjects: 'Português',
       schoolAbsence: 0,
-      n1: undefined,
-      n2: 5,
-      n3: 5,
-      n4: 5,
+      grades: [2],
+    },
+    {
+      id: 2,
+      schoolSubjects: 'Matematica',
+      schoolAbsence: 0,
+      grades: [5, 2, 3],
+    },
+    {
+      id: 3,
+      schoolSubjects: 'Inglês',
+      schoolAbsence: 0,
+      grades: [5, 8, 2],
+    },
+    {
+      id: 4,
+      schoolSubjects: 'Inglês',
+      schoolAbsence: 0,
+      grades: [5, 8, 2],
     },
   ])
 

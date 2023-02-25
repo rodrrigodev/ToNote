@@ -1,5 +1,7 @@
 import { Minus, Plus, Warning } from 'phosphor-react'
+import { useContext } from 'react'
 import { useTheme } from 'styled-components'
+import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import {
   AbscenceContainer,
   AbscenceIncreseDecrease,
@@ -10,6 +12,7 @@ import {
 
 export function Absence() {
   const theme = useTheme()
+  const { schoolData } = useContext(SchoolDataContext)
 
   return (
     <AbscenceContainer>
@@ -19,23 +22,27 @@ export function Absence() {
           Faltas
         </strong>
 
-        <IncreseAndDecrease>
-          <span>Português:</span>
+        {schoolData.map((data) => {
+          return (
+            <IncreseAndDecrease key={data.id}>
+              <span>{data.schoolSubjects}:</span>
 
-          <div>
-            <button>
-              <Plus size={32} />
-            </button>
+              <div>
+                <button>
+                  <Plus size={32} />
+                </button>
 
-            <input type="number" value={2} />
+                <input type="number" value={2} />
 
-            <button>
-              <Minus size={32} />
-            </button>
-          </div>
+                <button>
+                  <Minus size={32} />
+                </button>
+              </div>
 
-          <AddBtn type="button">Adicionar</AddBtn>
-        </IncreseAndDecrease>
+              <AddBtn type="button">Adicionar</AddBtn>
+            </IncreseAndDecrease>
+          )
+        })}
       </AbscenceIncreseDecrease>
 
       <TotalAbscence>

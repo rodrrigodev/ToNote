@@ -1,12 +1,9 @@
-export function CalcGrades(grade: number[]): number | null {
-  let value = 0
-  const x = grade.filter((x) => {
-    return x !== undefined
-  })
+export function CalcGrades(grade: number[]): number {
+  const x = grade.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+  )
 
-  x.forEach((x) => {
-    value += x
-  })
+  const y = x / grade.length
 
-  return x ? value / x.length : null
+  return Math.floor(Number(y.toFixed(1)))
 }

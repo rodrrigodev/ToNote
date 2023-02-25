@@ -28,7 +28,7 @@ export const GradesInfoContainer = styled.div`
   > div:not(:first-child) {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    margin-bottom: 1rem;
 
     div {
       background-color: ${(props) => props.theme.white};
@@ -79,6 +79,7 @@ export const WarningsContainer = styled.div`
   padding: 2.5rem;
   border-radius: 6px;
   width: 40%;
+  align-self: flex-start;
 
   strong {
     font-weight: 500;

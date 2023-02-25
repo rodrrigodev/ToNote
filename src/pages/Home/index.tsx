@@ -35,26 +35,53 @@ export function Home() {
                 <Grades variant="black">{data.schoolSubjects}</Grades>
                 <Grades
                   variant={
-                    data.n1 !== undefined && data.n1 >= 5 ? 'good' : 'bad'
+                    data.grades[0] !== undefined && data.grades[0] >= 5
+                      ? 'good'
+                      : 'bad'
                   }
                 >
-                  {data.n1}
+                  {data.grades[0]}
                 </Grades>
+
                 <Grades
                   variant={
-                    data.n2 !== undefined && data.n2 >= 5 ? 'good' : 'bad'
+                    data.grades[1] !== undefined && data.grades[1] >= 5
+                      ? 'good'
+                      : 'bad'
                   }
                 >
-                  {data.n2}
+                  {data.grades[1]}
                 </Grades>
-                <Grades variant={data.n3 >= 5 ? 'good' : 'bad'}>
-                  {data.n3}
+
+                <Grades
+                  variant={
+                    data.grades[2] !== undefined && data.grades[2] >= 5
+                      ? 'good'
+                      : 'bad'
+                  }
+                >
+                  {data.grades[2]}
                 </Grades>
-                <Grades variant={data.n4 >= 5 ? 'good' : 'bad'}>
-                  {data.n4}
+
+                <Grades
+                  variant={
+                    data.grades[3] !== undefined && data.grades[3] >= 5
+                      ? 'good'
+                      : 'bad'
+                  }
+                >
+                  {data.grades[3]}
                 </Grades>
-                <Grades variant={data.n1 >= 5 ? 'good' : 'bad'}>
-                  {CalcGrades([data.n1, data.n2, data.n3, data.n4])}
+
+                <Grades
+                  variant={
+                    CalcGrades(data.grades) !== undefined &&
+                    CalcGrades(data.grades) >= 5
+                      ? 'good'
+                      : 'bad'
+                  }
+                >
+                  {CalcGrades(data.grades)}
                 </Grades>
               </div>
             </div>
