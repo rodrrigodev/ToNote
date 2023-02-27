@@ -10,9 +10,12 @@ import {
 } from './styles'
 import * as Dialog from '@radix-ui/react-dialog'
 import { NewHomeworkModal } from './NewHomeworkModal'
+import { useContext } from 'react'
+import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 
 export function Homework() {
   const theme = useTheme()
+  const { warningsData } = useContext(SchoolDataContext)
 
   return (
     <HomeworkContainer>

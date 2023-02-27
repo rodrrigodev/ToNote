@@ -8,6 +8,7 @@ import {
 import { Form } from './styles'
 
 export function NewHomeworkModal() {
+  const dateNow = new Date().toLocaleDateString('pt-br', { dateStyle: 'short' })
   return (
     <Dialog.Portal>
       <Overlay />
@@ -21,7 +22,7 @@ export function NewHomeworkModal() {
         <Form>
           <input type="text" placeholder="Matéria" />
           <input type="text" placeholder="Assunto" />
-          <input type="text" placeholder="Data" />
+          <input type="text" placeholder={`${dateNow}`} />
           <button>Salvar</button>
         </Form>
       </Content>

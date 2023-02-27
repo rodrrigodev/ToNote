@@ -5,16 +5,6 @@ export const AbscenceContainer = styled(MainContainerBase)`
   display: flex;
   justify-content: space-between;
   gap: 3.75rem;
-`
-
-export const AbscenceIncreseDecrease = styled.div`
-  background-color: ${(props) => props.theme.black};
-  padding: 2.5rem;
-  border-radius: 6px;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   strong {
     font-size: 1.5rem;
@@ -27,6 +17,16 @@ export const AbscenceIncreseDecrease = styled.div`
   }
 `
 
+export const AbscenceIncreseDecrease = styled.div`
+  background-color: ${(props) => props.theme.black};
+  padding: 2.5rem;
+  border-radius: 6px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 export const IncreseAndDecrease = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.white};
@@ -36,11 +36,16 @@ export const IncreseAndDecrease = styled.div`
   padding: 0.875rem 1.0625rem;
   border-radius: 6px;
 
+  &:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+
   span {
     color: ${(props) => props.theme.black};
     font-weight: 500;
     font-size: 1.25rem;
     line-height: 1.4375rem;
+    width: 7rem;
   }
 
   div button {
@@ -91,43 +96,32 @@ export const AddBtn = styled.button`
 `
 
 export const TotalAbscence = styled.div`
+  background-color: ${(props) => props.theme.black};
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  padding: 2.5rem;
+
+  strong {
+    display: initial;
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 6px;
+  }
 
   span {
     font-size: 1.5rem;
     line-height: 1.75rem;
-    font-weight: 500;
-  }
-
-  div {
-    background-color: ${(props) => props.theme.black};
-    padding: 2.5rem;
+    padding: 1.5rem 2.5rem;
     border-radius: 6px;
-
-    &:first-child {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-
-      span:not(:first-of-type) {
-        padding: 1rem 1.5rem;
-        background-color: ${(props) => props.theme['red-light']};
-        border-radius: 6px;
-        font-weight: bolder;
-      }
-    }
-    &:last-child {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-
-      span:first-of-type {
-        color: ${(props) => props.theme['red-light']};
-        font-weight: bolder;
-      }
-    }
+    background-color: ${(props) => props.theme['red-dark']};
   }
+`
+
+export const TotalAbscenceCount = styled.div`
+  background-color: ${(props) => props.theme.black};
 `

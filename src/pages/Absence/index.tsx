@@ -8,6 +8,7 @@ import {
   AddBtn,
   IncreseAndDecrease,
   TotalAbscence,
+  TotalAbscenceCount,
 } from './styles'
 
 export function Absence() {
@@ -32,7 +33,7 @@ export function Absence() {
                   <Plus size={32} />
                 </button>
 
-                <input type="number" value={2} />
+                <input type="number" value={data.schoolAbsence} readOnly />
 
                 <button>
                   <Minus size={32} />
@@ -46,15 +47,17 @@ export function Absence() {
       </AbscenceIncreseDecrease>
 
       <TotalAbscence>
+        <strong>Total</strong>
         <div>
-          <span>Total</span>
-          <span>15</span>
+          {schoolData.map((data) => {
+            return <span>{data.schoolAbsence}</span>
+          })}
         </div>
 
-        <div>
+        <TotalAbscenceCount>
           <span>15</span>
           <span>Faltas</span>
-        </div>
+        </TotalAbscenceCount>
       </TotalAbscence>
     </AbscenceContainer>
   )

@@ -14,7 +14,7 @@ import { CalcGrades } from '../../utils/CalcGrades'
 
 export function Home() {
   const theme = useTheme()
-  const { schoolData } = useContext(SchoolDataContext)
+  const { schoolData, warningsData } = useContext(SchoolDataContext)
 
   return (
     <GradesAndWarningsContainer>
@@ -95,15 +95,14 @@ export function Home() {
           <Warning size={32} color={theme['red-light']} /> Avisos
         </strong>
 
-        <WarningItens variant="good">
-          <span>Impactos Ambientais</span>
-          <span>14 Dias Restantes</span>
-        </WarningItens>
-
-        <WarningItens variant="bad">
-          <span>Processo de evolução</span>
-          <span>6 Dias Restantes</span>
-        </WarningItens>
+        {warningsData.map((data) => {
+          return (
+            <WarningItens variant="good" key={data.id}>
+              <span>{data.warning}</span>
+              <span>{data.finalDate.toString()}</span>
+            </WarningItens>
+          )
+        })}
       </WarningsContainer>
     </GradesAndWarningsContainer>
   )
