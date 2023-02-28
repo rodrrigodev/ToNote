@@ -11,10 +11,12 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { CalcGrades } from '../../utils/CalcGrades'
+import { intlFormatDistance } from 'date-fns'
 
 export function Home() {
   const theme = useTheme()
   const { schoolData, warningsData } = useContext(SchoolDataContext)
+  console.log(warningsData[0].finalDate)
 
   return (
     <GradesAndWarningsContainer>
@@ -97,9 +99,19 @@ export function Home() {
 
         {warningsData.map((data) => {
           return (
-            <WarningItens variant="good" key={data.id}>
+            <WarningItens
+              variant={data.finished ? 'good' : 'bad'}
+              key={data.id}
+            >
               <span>{data.warning}</span>
-              <span>{data.finalDate.toString()}</span>
+
+              <span>
+                Entrega:
+                {' ' +
+                  intlFormatDistance(data.finalDate, new Date(), {
+                    locale: 'pt',
+                  })}
+              </span>
             </WarningItens>
           )
         })}

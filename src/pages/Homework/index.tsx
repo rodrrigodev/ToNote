@@ -12,6 +12,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { NewHomeworkModal } from './NewHomeworkModal'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
+import { intlFormatDistance } from 'date-fns'
 
 export function Homework() {
   const theme = useTheme()
@@ -41,29 +42,31 @@ export function Homework() {
             <button type="button">Finalizados</button>
           </div>
 
-          <HomeworkToFinish variant="finished">
-            <span>Historia</span>
-            <span
-              onClick={() => {
-                console.log('Funciona')
-              }}
-            >
-              II Guerra Mundial
-            </span>
-            <span>14 Dias Restantes</span>
-            <button type="button">
-              <Trash size={32} />
-            </button>
-          </HomeworkToFinish>
-
-          <HomeworkToFinish variant="notFinished">
-            <span>Geografia</span>
-            <span>Poluição Oceanica</span>
-            <span>4 Dias Restantes</span>
-            <button type="button">
-              <Trash size={32} />
-            </button>
-          </HomeworkToFinish>
+          {warningsData.map((data) => {
+            return (
+              <HomeworkToFinish
+                variant={data.finished ? 'finished' : 'notFinished'}
+                key={data.id}
+              >
+                <span>{data.schoolSubjects}</span>
+                <span
+                  onClick={() => {
+                    console.log('Funciona')
+                  }}
+                >
+                  {data.warning}
+                </span>
+                <span>
+                  {intlFormatDistance(data.finalDate, new Date(), {
+                    locale: 'pt',
+                  })}
+                </span>
+                <button type="button">
+                  <Trash size={32} />
+                </button>
+              </HomeworkToFinish>
+            )
+          })}
         </HomeworkDataContainer>
 
         <HomeworkLinksContainer>

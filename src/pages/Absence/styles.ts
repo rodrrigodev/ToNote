@@ -100,13 +100,14 @@ export const TotalAbscence = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2.5rem;
+  position: relative;
 
   strong {
     display: initial;
     text-align: center;
   }
 
-  div {
+  div:not(:last-of-type) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -124,4 +125,22 @@ export const TotalAbscence = styled.div`
 
 export const TotalAbscenceCount = styled.div`
   background-color: ${(props) => props.theme.black};
+  border-radius: 6px;
+  padding: 2rem 0;
+  width: 11.0625rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  left: 0;
+  bottom: -6.7rem;
+
+  span {
+    background-color: transparent;
+    padding: 0;
+
+    &:first-of-type {
+      color: ${(props) => props.theme['red-light']};
+    }
+  }
 `

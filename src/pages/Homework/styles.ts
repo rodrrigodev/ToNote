@@ -148,6 +148,18 @@ export const HomeworkToFinish = styled.div<HomeworkToFinishProps>`
       background-color: transparent;
     }
   }
+
+  span:nth-child(1) {
+    width: 10rem;
+  }
+
+  span:nth-child(2) {
+    width: 17rem;
+  }
+
+  span:nth-child(3) {
+    width: 11rem;
+  }
 `
 
 export const HomeworkLinksContainer = styled.aside`

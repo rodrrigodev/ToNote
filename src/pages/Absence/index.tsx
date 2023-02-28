@@ -50,7 +50,7 @@ export function Absence() {
         <strong>Total</strong>
         <div>
           {schoolData.map((data) => {
-            return <span>{data.schoolAbsence}</span>
+            return <span key={data.id + 1}>{data.schoolAbsence}</span>
           })}
         </div>
 

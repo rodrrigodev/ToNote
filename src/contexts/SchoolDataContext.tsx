@@ -11,6 +11,7 @@ interface WarningsData {
   id: number
   schoolSubjects: string
   warning: string
+  finished: boolean
   finalDate: Date
 }
 
@@ -60,7 +61,15 @@ export function SchoolDataContextProvider({
       id: 1,
       schoolSubjects: 'Português',
       warning: 'Literatura na sociedade',
-      finalDate: new Date(2023, 11, 17),
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: 2,
+      schoolSubjects: 'Literutura',
+      warning: 'II Guerra Mundial',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
     },
   ])
 
