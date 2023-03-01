@@ -1,16 +1,22 @@
 import { createContext, ReactNode, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 interface SchoolData {
-  id: number
-  schoolSubjects: string
+  id: string
+  schoolSubject: string
   schoolAbsence: number
-  grades: { n1?: number; n2?: number; n3?: number; n4?: number }
+  grades: {
+    gradeOne?: number
+    gradeTwo?: number
+    gradeThree?: number
+    gradeFour?: number
+  }
   finalGrade?: number
 }
 
 interface WarningsData {
-  id: number
-  schoolSubjects: string
+  id: string
+  schoolSubject: string
   warning: string
   finished: boolean
   finalDate: Date
@@ -33,46 +39,46 @@ export function SchoolDataContextProvider({
 }: SchoolDataContextProviderProps) {
   const [schoolData, setSchoolData] = useState<SchoolData[]>([
     {
-      id: 1,
-      schoolSubjects: 'Português',
+      id: uuidv4(),
+      schoolSubject: 'Português',
       schoolAbsence: 0,
-      grades: { n1: 5, n2: 4, n3: 8 },
+      grades: { gradeOne: 5, gradeTwo: 4, gradeThree: 8 },
       finalGrade: 5.5,
     },
     {
-      id: 2,
-      schoolSubjects: 'Matematica',
+      id: uuidv4(),
+      schoolSubject: 'Matematica',
       schoolAbsence: 1,
-      grades: { n1: 5, n2: 2, n3: 3 },
+      grades: { gradeOne: 5, gradeTwo: 2, gradeThree: 3 },
       finalGrade: 3.5,
     },
     {
-      id: 3,
-      schoolSubjects: 'Inglês',
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
       schoolAbsence: 2,
-      grades: { n1: 5, n2: 8, n3: 2 },
+      grades: { gradeOne: 5, gradeTwo: 8, gradeThree: 2 },
       finalGrade: 5,
     },
     {
-      id: 4,
-      schoolSubjects: 'Inglês',
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
       schoolAbsence: 3,
-      grades: { n1: 5, n2: 5, n3: 10 },
+      grades: { gradeOne: 5, gradeTwo: 5, gradeThree: 10 },
       finalGrade: 6.5,
     },
   ])
 
   const [warningsData, setWarningsData] = useState<WarningsData[]>([
     {
-      id: 1,
-      schoolSubjects: 'Português',
+      id: uuidv4(),
+      schoolSubject: 'Português',
       warning: 'Literatura na sociedade',
       finalDate: new Date(2023, 1, 1),
       finished: true,
     },
     {
-      id: 2,
-      schoolSubjects: 'Literutura',
+      id: uuidv4(),
+      schoolSubject: 'Literutura',
       warning: 'II Guerra Mundial',
       finalDate: new Date(2023, 4, 5),
       finished: false,
@@ -80,17 +86,7 @@ export function SchoolDataContextProvider({
   ])
 
   function handleAddNewSchoolData(data: SchoolData) {
-    const id = schoolData.length
-
-    setSchoolData((state) => [
-      ...state,
-      {
-        id,
-        schoolAbsence: 0,
-        schoolSubjects: data.schoolSubjects,
-        grades: data.grades,
-      },
-    ])
+    setSchoolData((state) => [...state, data])
   }
 
   return (

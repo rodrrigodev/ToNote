@@ -33,45 +33,49 @@ export function Home() {
           return (
             <div key={data.id}>
               <div>
-                <Grades variant="black">{data.schoolSubjects}</Grades>
+                <Grades variant="black">{data.schoolSubject}</Grades>
                 <Grades
                   variant={
-                    data.grades.n1 !== undefined && data.grades.n1 >= 5
+                    data.grades.gradeOne !== undefined &&
+                    data.grades.gradeOne >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades.n1}
+                  {data.grades.gradeOne}
                 </Grades>
 
                 <Grades
                   variant={
-                    data.grades.n2 !== undefined && data.grades.n2 >= 5
+                    data.grades.gradeTwo !== undefined &&
+                    data.grades.gradeTwo >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades.n2}
+                  {data.grades.gradeTwo}
                 </Grades>
 
                 <Grades
                   variant={
-                    data.grades.n3 !== undefined && data.grades.n3 >= 5
+                    data.grades.gradeThree !== undefined &&
+                    data.grades.gradeThree >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades.n3}
+                  {data.grades.gradeThree}
                 </Grades>
 
                 <Grades
                   variant={
-                    data.grades.n4 !== undefined && data.grades.n4 >= 5
+                    data.grades.gradeFour !== undefined &&
+                    data.grades.gradeFour >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades.n4}
+                  {data.grades.gradeFour}
                 </Grades>
 
                 <Grades
