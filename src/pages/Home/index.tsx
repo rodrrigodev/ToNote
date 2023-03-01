@@ -10,7 +10,6 @@ import { useTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
-import { CalcGrades } from '../../utils/CalcGrades'
 import { intlFormatDistance } from 'date-fns'
 
 export function Home() {
@@ -37,53 +36,52 @@ export function Home() {
                 <Grades variant="black">{data.schoolSubjects}</Grades>
                 <Grades
                   variant={
-                    data.grades[0] !== undefined && data.grades[0] >= 5
+                    data.grades.n1 !== undefined && data.grades.n1 >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades[0]}
+                  {data.grades.n1}
                 </Grades>
 
                 <Grades
                   variant={
-                    data.grades[1] !== undefined && data.grades[1] >= 5
+                    data.grades.n2 !== undefined && data.grades.n2 >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades[1]}
+                  {data.grades.n2}
                 </Grades>
 
                 <Grades
                   variant={
-                    data.grades[2] !== undefined && data.grades[2] >= 5
+                    data.grades.n3 !== undefined && data.grades.n3 >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades[2]}
+                  {data.grades.n3}
                 </Grades>
 
                 <Grades
                   variant={
-                    data.grades[3] !== undefined && data.grades[3] >= 5
+                    data.grades.n4 !== undefined && data.grades.n4 >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {data.grades[3]}
+                  {data.grades.n4}
                 </Grades>
 
                 <Grades
                   variant={
-                    CalcGrades(data.grades) !== undefined &&
-                    CalcGrades(data.grades) >= 5
+                    data.finalGrade !== undefined && data.finalGrade >= 5
                       ? 'good'
                       : 'bad'
                   }
                 >
-                  {CalcGrades(data.grades)}
+                  {data.finalGrade}
                 </Grades>
               </div>
             </div>
