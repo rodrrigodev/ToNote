@@ -13,9 +13,10 @@ export function calcGrades(data: number[]): number {
   if (convert.toString().length > 1) {
     if (Number(convert.toString()[2]) > 5) {
       return Math.round(convert)
-    }
-    if (Number(convert.toString()[2]) < 3) {
+    } else if (Number(convert.toString()[2]) < 3) {
       return Math.floor(convert)
+    } else if (Number(convert.toString()[2]) === 3) {
+      return Number(convert.toString()[0] + '.' + 5)
     }
   }
   return Number(convert.toFixed(1))
