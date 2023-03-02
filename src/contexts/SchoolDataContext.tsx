@@ -6,12 +6,11 @@ interface SchoolData {
   schoolSubject: string
   schoolAbsence: number
   grades: {
-    gradeOne?: number
-    gradeTwo?: number
-    gradeThree?: number
-    gradeFour?: number
+    gradeOne: number
+    gradeTwo: number
+    gradeThree: number
+    gradeFour: number
   }
-  finalGrade?: number
 }
 
 interface WarningsData {
@@ -42,29 +41,25 @@ export function SchoolDataContextProvider({
       id: uuidv4(),
       schoolSubject: 'Português',
       schoolAbsence: 0,
-      grades: { gradeOne: 5, gradeTwo: 4, gradeThree: 8 },
-      finalGrade: 5.5,
+      grades: { gradeOne: 0, gradeTwo: 4, gradeThree: 8, gradeFour: 0 },
     },
     {
       id: uuidv4(),
       schoolSubject: 'Matematica',
       schoolAbsence: 1,
-      grades: { gradeOne: 5, gradeTwo: 2, gradeThree: 3 },
-      finalGrade: 3.5,
+      grades: { gradeOne: 5, gradeTwo: 2, gradeThree: 3, gradeFour: 0 },
     },
     {
       id: uuidv4(),
       schoolSubject: 'Inglês',
       schoolAbsence: 2,
-      grades: { gradeOne: 5, gradeTwo: 8, gradeThree: 2 },
-      finalGrade: 5,
+      grades: { gradeOne: 5, gradeTwo: 8, gradeThree: 2, gradeFour: 0 },
     },
     {
       id: uuidv4(),
       schoolSubject: 'Inglês',
       schoolAbsence: 3,
-      grades: { gradeOne: 5, gradeTwo: 5, gradeThree: 10 },
-      finalGrade: 6.5,
+      grades: { gradeOne: 5, gradeTwo: 5, gradeThree: 10, gradeFour: 0 },
     },
   ])
 

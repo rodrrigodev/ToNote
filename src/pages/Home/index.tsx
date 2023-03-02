@@ -11,11 +11,11 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { intlFormatDistance } from 'date-fns'
+import { calcGrades } from '../../utils/calcMedia'
 
 export function Home() {
   const theme = useTheme()
   const { schoolData, warningsData } = useContext(SchoolDataContext)
-  console.log(warningsData[0].finalDate)
 
   return (
     <GradesAndWarningsContainer>
@@ -30,62 +30,44 @@ export function Home() {
         </div>
 
         {schoolData.map((data) => {
+          const {
+            grades: { gradeOne, gradeTwo, gradeThree, gradeFour },
+          } = data
+          const finalGrade = calcGrades([
+            gradeOne,
+            gradeTwo,
+            gradeThree,
+            gradeFour,
+          ])
+
           return (
             <div key={data.id}>
               <div>
                 <Grades variant="black">{data.schoolSubject}</Grades>
-                <Grades
-                  variant={
-                    data.grades.gradeOne !== undefined &&
-                    data.grades.gradeOne >= 5
-                      ? 'good'
-                      : 'bad'
-                  }
-                >
-                  {data.grades.gradeOne}
+                <Grades variant={!!gradeOne && gradeOne >= 5 ? 'good' : 'bad'}>
+                  {gradeOne || ''}
+                </Grades>
+
+                <Grades variant={!!gradeTwo && gradeTwo >= 5 ? 'good' : 'bad'}>
+                  {gradeTwo || ''}
                 </Grades>
 
                 <Grades
-                  variant={
-                    data.grades.gradeTwo !== undefined &&
-                    data.grades.gradeTwo >= 5
-                      ? 'good'
-                      : 'bad'
-                  }
+                  variant={!!gradeThree && gradeThree >= 5 ? 'good' : 'bad'}
                 >
-                  {data.grades.gradeTwo}
+                  {gradeThree || ''}
                 </Grades>
 
                 <Grades
-                  variant={
-                    data.grades.gradeThree !== undefined &&
-                    data.grades.gradeThree >= 5
-                      ? 'good'
-                      : 'bad'
-                  }
+                  variant={!!gradeFour && gradeFour >= 5 ? 'good' : 'bad'}
                 >
-                  {data.grades.gradeThree}
+                  {gradeFour || ''}
                 </Grades>
 
                 <Grades
-                  variant={
-                    data.grades.gradeFour !== undefined &&
-                    data.grades.gradeFour >= 5
-                      ? 'good'
-                      : 'bad'
-                  }
+                  variant={!!finalGrade && finalGrade >= 5 ? 'good' : 'bad'}
                 >
-                  {data.grades.gradeFour}
-                </Grades>
-
-                <Grades
-                  variant={
-                    data.finalGrade !== undefined && data.finalGrade >= 5
-                      ? 'good'
-                      : 'bad'
-                  }
-                >
-                  {data.finalGrade}
+                  {finalGrade || ''}
                 </Grades>
               </div>
             </div>
