@@ -48,7 +48,7 @@ export function Homework() {
                 variant={data.finished ? 'finished' : 'notFinished'}
                 key={data.id}
               >
-                <span>{data.schoolSubjects}</span>
+                <span>{data.schoolSubject}</span>
                 <span
                   onClick={() => {
                     console.log('Funciona')

@@ -1,5 +1,6 @@
 import { Minus, Plus, Warning } from 'phosphor-react'
 import { useContext } from 'react'
+import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import {
@@ -15,6 +16,8 @@ export function Absence() {
   const theme = useTheme()
   const { schoolData } = useContext(SchoolDataContext)
 
+  const { register } = useForm()
+
   return (
     <AbscenceContainer>
       <AbscenceIncreseDecrease>
@@ -26,14 +29,18 @@ export function Absence() {
         {schoolData.map((data) => {
           return (
             <IncreseAndDecrease key={data.id}>
-              <span>{data.schoolSubjects}:</span>
+              <span>{data.schoolSubject}:</span>
 
               <div>
                 <button>
                   <Plus size={32} />
                 </button>
 
-                <input type="number" value={data.schoolAbsence} readOnly />
+                <input
+                  {...register(data.id)}
+                  value={data.schoolAbsence.toUpdate}
+                  readOnly
+                />
 
                 <button>
                   <Minus size={32} />
@@ -50,7 +57,9 @@ export function Absence() {
         <strong>Total</strong>
         <div>
           {schoolData.map((data) => {
-            return <span key={data.id + 1}>{data.schoolAbsence}</span>
+            return (
+              <span key={data.id + 1}>{data.schoolAbsence.actualValue}</span>
+            )
           })}
         </div>
 

@@ -8,7 +8,7 @@ import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { v4 as uuidv4 } from 'uuid'
 
-const newSchoolSubjectSchema = z.object({
+export const newSchoolSubjectSchema = z.object({
   schoolSubject: z.string().min(4),
   gradeOne: z.number().max(10).or(z.nan()),
   gradeTwo: z.number().max(10).or(z.nan()),
@@ -16,24 +16,19 @@ const newSchoolSubjectSchema = z.object({
   gradeFour: z.number().max(10).or(z.nan()),
 })
 
-type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
+export type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
 
 export function NewSchoolSubjectModal() {
   const { handleAddNewSchoolData } = useContext(SchoolDataContext)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SchoolSubjectSchema>({
+  const { register, handleSubmit, reset } = useForm<SchoolSubjectSchema>({
     resolver: zodResolver(newSchoolSubjectSchema),
   })
 
-  console.log(errors)
   function onSub(data: SchoolSubjectSchema) {
     const id = uuidv4()
     const { schoolSubject, gradeOne, gradeTwo, gradeThree, gradeFour } = data
-    console.log(gradeOne)
+
     const finalData = {
       id,
       schoolSubject,
@@ -47,6 +42,7 @@ export function NewSchoolSubjectModal() {
     }
 
     handleAddNewSchoolData(finalData)
+    reset()
   }
 
   return (
