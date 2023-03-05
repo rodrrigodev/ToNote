@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { intlFormatDistance } from 'date-fns'
-import { calcGrades } from '../../utils/calcMedia'
+import { calcGrades } from '../../utils/calcGrades'
 
 export function Home() {
   const theme = useTheme()

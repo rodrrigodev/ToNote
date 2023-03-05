@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-interface SchoolData {
+export interface SchoolData {
   id: string
   schoolSubject: string
-  schoolAbsence: { toUpdate: number; actualValue: number }
+  schoolAbsence: number
   grades: {
     gradeOne: number
     gradeTwo: number
@@ -40,25 +40,25 @@ export function SchoolDataContextProvider({
     {
       id: uuidv4(),
       schoolSubject: 'Português',
-      schoolAbsence: { toUpdate: 0, actualValue: 0 },
+      schoolAbsence: 0,
       grades: { gradeOne: 0, gradeTwo: 4, gradeThree: 8, gradeFour: 0 },
     },
     {
       id: uuidv4(),
       schoolSubject: 'Matematica',
-      schoolAbsence: { toUpdate: 0, actualValue: 2 },
+      schoolAbsence: 0,
       grades: { gradeOne: 5, gradeTwo: 2, gradeThree: 3, gradeFour: 0 },
     },
     {
       id: uuidv4(),
       schoolSubject: 'Inglês',
-      schoolAbsence: { toUpdate: 0, actualValue: 4 },
+      schoolAbsence: 0,
       grades: { gradeOne: 5, gradeTwo: 8, gradeThree: 2, gradeFour: 0 },
     },
     {
       id: uuidv4(),
       schoolSubject: 'Inglês',
-      schoolAbsence: { toUpdate: 0, actualValue: 0 },
+      schoolAbsence: 0,
       grades: { gradeOne: 5, gradeTwo: 5, gradeThree: 10, gradeFour: 0 },
     },
   ])
@@ -85,21 +85,21 @@ export function SchoolDataContextProvider({
   }
 
   function handleAddUpdateSchoolData(id: string) {
-    setSchoolData((state) =>
-      state.map((data) => {
-        if (data.id === id) {
-          return {
-            ...data,
-            schoolAbsence: {
-              actualValue: 0,
-              toUpdate: data.schoolAbsence.toUpdate++,
-            },
-          }
-        } else {
-          return data
-        }
-      }),
-    )
+    // setSchoolData((state) =>
+    //   state.map((data) => {
+    //     if (data.id === id) {
+    //       return {
+    //         ...data,
+    //         schoolAbsence: {
+    //           actualValue: 0,
+    //           toUpdate: data.schoolAbsence.toUpdate++,
+    //         },
+    //       }
+    //     } else {
+    //       return data
+    //     }
+    //   }),
+    // )
   }
 
   return (

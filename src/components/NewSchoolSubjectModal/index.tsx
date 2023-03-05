@@ -38,6 +38,7 @@ export function NewSchoolSubjectModal() {
         gradeThree: gradeThree || 0,
         gradeFour: gradeFour || 0,
       },
+
       schoolAbsence: 0,
     }
 
