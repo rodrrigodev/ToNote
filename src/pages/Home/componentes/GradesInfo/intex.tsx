@@ -6,7 +6,7 @@ interface GradesInfoProps {
   info: SchoolData
 }
 
-export function GradesInfoContainer({ info }: GradesInfoProps) {
+export function GradesInfo({ info }: GradesInfoProps) {
   const {
     schoolSubject,
     grades: { gradeOne, gradeTwo, gradeThree, gradeFour },

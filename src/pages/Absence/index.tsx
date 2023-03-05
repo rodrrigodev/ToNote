@@ -1,13 +1,11 @@
-import { Minus, Plus, Warning } from 'phosphor-react'
+import { Warning } from 'phosphor-react'
 import { useContext } from 'react'
-import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
+import { AbsenceContainer } from './components/AbsenceContainer'
 import {
   AbscenceContainer,
   AbscenceIncreseDecrease,
-  AddBtn,
-  IncreseAndDecrease,
   TotalAbscence,
   TotalAbscenceCount,
 } from './styles'
@@ -15,8 +13,6 @@ import {
 export function Absence() {
   const theme = useTheme()
   const { schoolData } = useContext(SchoolDataContext)
-
-  const { register } = useForm()
 
   return (
     <AbscenceContainer>
@@ -27,29 +23,7 @@ export function Absence() {
         </strong>
 
         {schoolData.map((data) => {
-          return (
-            <IncreseAndDecrease key={data.id}>
-              <span>{data.schoolSubject}:</span>
-
-              <div>
-                <button>
-                  <Plus size={32} />
-                </button>
-
-                <input
-                  {...register(data.id)}
-                  value={data.schoolAbsence.toUpdate}
-                  readOnly
-                />
-
-                <button>
-                  <Minus size={32} />
-                </button>
-              </div>
-
-              <AddBtn type="button">Adicionar</AddBtn>
-            </IncreseAndDecrease>
-          )
+          return <AbsenceContainer key={data.id} data={data} />
         })}
       </AbscenceIncreseDecrease>
 
@@ -57,9 +31,7 @@ export function Absence() {
         <strong>Total</strong>
         <div>
           {schoolData.map((data) => {
-            return (
-              <span key={data.id + 1}>{data.schoolAbsence.actualValue}</span>
-            )
+            return <span key={data.id + 1}>{data.schoolAbsence}</span>
           })}
         </div>
 
