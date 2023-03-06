@@ -32,6 +32,7 @@ export const SchoolGradesToEdit = styled.div`
     font-size: 1.5rem;
     line-height: 1.75rem;
     color: ${(props) => props.theme.black};
+    width: 8rem;
   }
 
   input {

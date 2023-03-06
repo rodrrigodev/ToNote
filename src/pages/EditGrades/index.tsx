@@ -9,19 +9,23 @@ import {
 } from './styles'
 
 export function Edit() {
-  const { schoolData } = useContext(SchoolDataContext)
+  const { schoolData, handleRemoveschoolSubject } =
+    useContext(SchoolDataContext)
 
   return (
     <EditContainer>
       {schoolData.map((data) => {
         const {
           grades: { gradeOne, gradeTwo, gradeThree, gradeFour },
+          schoolSubject,
+          id,
         } = data
+
         return (
           <form key={data.id}>
             <SchoolGradesToEdit>
               <div>
-                <span>Português</span>
+                <span>{schoolSubject}</span>
                 <input
                   value={gradeOne || ''}
                   type="number"
@@ -44,7 +48,7 @@ export function Edit() {
                 />
               </div>
 
-              <DeleteGradeBtn>
+              <DeleteGradeBtn onClick={() => handleRemoveschoolSubject(id)}>
                 <Trash size={32} />
               </DeleteGradeBtn>
               <UpdateBtn type="submit">Atualizar</UpdateBtn>

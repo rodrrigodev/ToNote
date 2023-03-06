@@ -34,6 +34,7 @@ interface SchoolDataContextType {
   handleAddNewSchoolData: (data: SchoolData) => void
   handleUpdateSchoolAbsence: (id: string, quantity: number) => void
   handleEditSchoolGrades: (id: string, grades: Grades) => void
+  handleRemoveschoolSubject: (id: string) => void
 }
 
 export const SchoolDataContext = createContext({} as SchoolDataContextType)
@@ -108,17 +109,24 @@ export function SchoolDataContextProvider({
     )
   }
 
-  function handleEditSchoolGrades(id: string, grades: Grades) {
-    schoolData.map((data) => {
-      if (data.id === id) {
-        return {
-          ...data,
-          grades: { grades },
+  function handleEditSchoolGrades(id: string, x: Grades) {
+    setSchoolData((state) =>
+      state.map((data) => {
+        if (data.id === id) {
+          return { ...data, grades: x }
+        } else {
+          return data
         }
-      } else {
-        return data
-      }
+      }),
+    )
+  }
+
+  function handleRemoveschoolSubject(id: string) {
+    const filterSchoolSubject = schoolData.filter((data) => {
+      return data.id !== id
     })
+
+    setSchoolData(filterSchoolSubject)
   }
 
   return (
@@ -129,6 +137,7 @@ export function SchoolDataContextProvider({
         handleAddNewSchoolData,
         handleUpdateSchoolAbsence,
         handleEditSchoolGrades,
+        handleRemoveschoolSubject,
       }}
     >
       {children}
