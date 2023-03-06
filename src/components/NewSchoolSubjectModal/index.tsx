@@ -10,10 +10,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 export const newSchoolSubjectSchema = z.object({
   schoolSubject: z.string().min(4),
-  gradeOne: z.number().max(10).or(z.nan()),
-  gradeTwo: z.number().max(10).or(z.nan()),
-  gradeThree: z.number().max(10).or(z.nan()),
-  gradeFour: z.number().max(10).or(z.nan()),
+  gradeOne: z.number().max(10).or(z.nan()).or(z.null()),
+  gradeTwo: z.number().max(10).or(z.nan()).or(z.null()),
+  gradeThree: z.number().max(10).or(z.nan()).or(z.null()),
+  gradeFour: z.number().max(10).or(z.nan()).or(z.null()),
 })
 
 export type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
@@ -25,7 +25,17 @@ export function NewSchoolSubjectModal() {
     resolver: zodResolver(newSchoolSubjectSchema),
   })
 
-  function onSub(data: SchoolSubjectSchema) {
+  function resetForm() {
+    reset({
+      schoolSubject: '',
+      gradeOne: null,
+      gradeTwo: null,
+      gradeThree: null,
+      gradeFour: null,
+    })
+  }
+
+  function createNewSubject(data: SchoolSubjectSchema) {
     const id = uuidv4()
     const { schoolSubject, gradeOne, gradeTwo, gradeThree, gradeFour } = data
 
@@ -43,13 +53,7 @@ export function NewSchoolSubjectModal() {
     }
 
     handleAddNewSchoolData(finalData)
-    reset({
-      schoolSubject: '',
-      gradeOne: null,
-      gradeTwo: null,
-      gradeThree: null,
-      gradeFour: null,
-    })
+    resetForm()
   }
 
   return (
@@ -63,7 +67,7 @@ export function NewSchoolSubjectModal() {
           <X size={32} />
         </CloseButton>
 
-        <form onSubmit={handleSubmit(onSub)}>
+        <form onSubmit={handleSubmit(createNewSubject)}>
           <input placeholder="Matéria" {...register('schoolSubject')} />
 
           <div>
