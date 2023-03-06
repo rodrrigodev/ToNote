@@ -21,19 +21,6 @@ export const IncreseAndDecrease = styled.div`
     width: 7rem;
   }
 
-  div button {
-    background-color: transparent;
-    border: 0;
-    color: ${(props) => props.theme['blue-light']};
-    cursor: pointer;
-    transition: all 500ms;
-
-    &:hover {
-      color: ${(props) => props.theme['blue-dark']};
-      transition: all 500ms;
-    }
-  }
-
   input {
     font-size: 1.5rem;
     line-height: 1.75rem;
@@ -50,6 +37,22 @@ export const IncreseAndDecrease = styled.div`
     display: flex;
     align-items: center;
     gap: 0.875rem;
+  }
+`
+export const PlusAndMinusBtn = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: ${(props) => props.theme['blue-light']};
+  cursor: pointer;
+  transition: all 500ms;
+
+  &:disabled {
+    color: ${(props) => props.theme.disabled};
+  }
+
+  &:hover:not(:disabled) {
+    color: ${(props) => props.theme['blue-dark']};
+    transition: all 500ms;
   }
 `
 

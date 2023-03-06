@@ -3,6 +3,7 @@ export const defaultTheme = {
   'black-light': '#b4b4b4',
   'blue-light': '#00d1ff',
   'blue-dark': '#0092b3',
+  disabled: '#8D8686',
   'green-light': '#00ff00',
   'green-dark': '#04bc00',
   background: '#303030',

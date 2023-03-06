@@ -25,6 +25,7 @@ interface SchoolDataContextType {
   schoolData: SchoolData[]
   warningsData: WarningsData[]
   handleAddNewSchoolData: (data: SchoolData) => void
+  handleUpdateSchoolAbsence: (id: string, quantity: number) => void
 }
 
 export const SchoolDataContext = createContext({} as SchoolDataContextType)
@@ -84,27 +85,29 @@ export function SchoolDataContextProvider({
     setSchoolData((state) => [...state, data])
   }
 
-  function handleAddUpdateSchoolData(id: string) {
-    // setSchoolData((state) =>
-    //   state.map((data) => {
-    //     if (data.id === id) {
-    //       return {
-    //         ...data,
-    //         schoolAbsence: {
-    //           actualValue: 0,
-    //           toUpdate: data.schoolAbsence.toUpdate++,
-    //         },
-    //       }
-    //     } else {
-    //       return data
-    //     }
-    //   }),
-    // )
+  function handleUpdateSchoolAbsence(id: string, quantity: number) {
+    setSchoolData((state) =>
+      state.map((data) => {
+        if (data.id === id) {
+          return {
+            ...data,
+            schoolAbsence: data.schoolAbsence + quantity,
+          }
+        } else {
+          return data
+        }
+      }),
+    )
   }
 
   return (
     <SchoolDataContext.Provider
-      value={{ schoolData, warningsData, handleAddNewSchoolData }}
+      value={{
+        schoolData,
+        warningsData,
+        handleAddNewSchoolData,
+        handleUpdateSchoolAbsence,
+      }}
     >
       {children}
     </SchoolDataContext.Provider>
