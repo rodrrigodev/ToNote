@@ -43,7 +43,13 @@ export function NewSchoolSubjectModal() {
     }
 
     handleAddNewSchoolData(finalData)
-    reset()
+    reset({
+      schoolSubject: '',
+      gradeOne: null,
+      gradeTwo: null,
+      gradeThree: null,
+      gradeFour: null,
+    })
   }
 
   return (

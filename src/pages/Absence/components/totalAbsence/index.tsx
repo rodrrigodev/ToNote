@@ -1,5 +1,3 @@
-export function TotalAbsence(){
-    return(
-        
-    )
+export function TotalAbsence() {
+  return <h1>jk</h1>
 }
