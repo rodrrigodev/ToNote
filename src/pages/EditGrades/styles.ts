@@ -7,15 +7,9 @@ export const EditContainer = styled(MainContainerBase)`
   border-radius: 6px;
 
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 3.75rem;
-
-  form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  gap: 1.5rem;
 `
 export const SchoolGradesToEdit = styled.div`
   background-color: ${(props) => props.theme.white};

@@ -21,11 +21,19 @@ interface WarningsData {
   finalDate: Date
 }
 
+interface Grades {
+  gradeOne: number
+  gradeTwo: number
+  gradeThree: number
+  gradeFour: number
+}
+
 interface SchoolDataContextType {
   schoolData: SchoolData[]
   warningsData: WarningsData[]
   handleAddNewSchoolData: (data: SchoolData) => void
   handleUpdateSchoolAbsence: (id: string, quantity: number) => void
+  handleEditSchoolGrades: (id: string, grades: Grades) => void
 }
 
 export const SchoolDataContext = createContext({} as SchoolDataContextType)
@@ -100,6 +108,19 @@ export function SchoolDataContextProvider({
     )
   }
 
+  function handleEditSchoolGrades(id: string, grades: Grades) {
+    schoolData.map((data) => {
+      if (data.id === id) {
+        return {
+          ...data,
+          grades: { grades },
+        }
+      } else {
+        return data
+      }
+    })
+  }
+
   return (
     <SchoolDataContext.Provider
       value={{
@@ -107,6 +128,7 @@ export function SchoolDataContextProvider({
         warningsData,
         handleAddNewSchoolData,
         handleUpdateSchoolAbsence,
+        handleEditSchoolGrades,
       }}
     >
       {children}

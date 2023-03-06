@@ -3,7 +3,7 @@ import { DefaultLayout } from './layouts/defaultLayout'
 import { Home } from './pages/Home'
 import { Absence } from './pages/Absence'
 import { Homework } from './pages/Homework'
-import { Edit } from './pages/Edit'
+import { Edit } from './pages/EditGrades'
 
 export function Router() {
   return (

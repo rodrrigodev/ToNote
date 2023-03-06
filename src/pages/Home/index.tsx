@@ -2,8 +2,8 @@ import { GradesAndWarningsContainer, GradesInfoContainer } from './styles'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
-import { GradesInfo } from './componentes/GradesInfo/intex'
-import { Warnings } from './componentes/Warnings'
+import { GradesInfo } from './components/GradesInfo/intex'
+import { Warnings } from './components/Warnings'
 
 export function Home() {
   const { schoolData } = useContext(SchoolDataContext)

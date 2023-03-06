@@ -8,7 +8,7 @@ import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { v4 as uuidv4 } from 'uuid'
 
-export const newSchoolSubjectSchema = z.object({
+const newSchoolSubjectSchema = z.object({
   schoolSubject: z.string().min(4),
   gradeOne: z.number().max(10).or(z.nan()).or(z.null()),
   gradeTwo: z.number().max(10).or(z.nan()).or(z.null()),
