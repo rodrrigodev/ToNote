@@ -1,39 +1,74 @@
 import { Trash } from 'phosphor-react'
-import { Grades } from '../../../contexts/SchoolDataContext'
+import { Grades, SchoolDataContext } from '../../../contexts/SchoolDataContext'
 import { DeleteGradeBtn, SchoolGradesToEdit, UpdateBtn } from './styles'
 import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
+
+const gradesSchema = z.object({
+  gradeOne: z.number().max(10).or(z.nan()).or(z.null()),
+  gradeTwo: z.number().max(10).or(z.nan()).or(z.null()),
+  gradeThree: z.number().max(10).or(z.nan()).or(z.null()),
+  gradeFour: z.number().max(10).or(z.nan()).or(z.null()),
+})
+
+type GradesSchema = z.infer<typeof gradesSchema>
 
 interface GradesProps {
   grades: Grades
   id: string
+  schoolSubject: string
 }
 
 export function FormEditGrades({
   grades: { gradeOne, gradeFour, gradeThree, gradeTwo },
   id,
+  schoolSubject,
 }: GradesProps) {
-  const { register, handleSubmit } = useForm()
+  const { schoolData, handleEditSchoolGrades } = useContext(SchoolDataContext)
 
-  function handleGradesToUpdate(data: any) {
-    // const { gradeFour, gradeOne, gradeThree, gradeTwo } = data
-    // const ok = getValues()
-    // const x = {
-    //   gradeOne: gradeOne || 0,
-    //   gradeTwo: gradeTwo || 0,
-    //   gradeThree: gradeThree || 0,
-    //   gradeFour: gradeFour || 0,
-    // }
-    // setDatabase(x)
-    console.log(data, id)
+  const { register, handleSubmit, reset } = useForm<GradesSchema>({
+    resolver: zodResolver(gradesSchema),
+  })
 
-    // setTimeout(console.log(x, id), 2000)
+  function resetData() {
+    reset({
+      gradeOne: null,
+      gradeTwo: null,
+      gradeThree,
+      gradeFour: null,
+    })
+  }
+
+  function handleGradesToUpdate(data: GradesSchema) {
+    const { gradeFour, gradeOne, gradeThree, gradeTwo } = data
+
+    let x
+
+    const findData = schoolData.find((data) => {
+      return data.id === id
+    })
+
+    if (findData) {
+      const { grades } = findData
+      x = {
+        gradeOne: gradeOne || grades.gradeOne,
+        gradeTwo: gradeTwo || grades.gradeTwo,
+        gradeThree: gradeThree || grades.gradeThree,
+        gradeFour: gradeFour || grades.gradeFour,
+      }
+
+      handleEditSchoolGrades(id, x)
+    }
+    resetData()
   }
 
   return (
     <form onSubmit={handleSubmit(handleGradesToUpdate)}>
       <SchoolGradesToEdit>
         <div>
-          {/* <span>{schoolSubject}</span> */}
+          <span>{schoolSubject}</span>
           <input
             type="number"
             placeholder={gradeOne ? gradeOne.toString() : '1ª Nota'}

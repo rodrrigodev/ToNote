@@ -10,7 +10,12 @@ export function Edit() {
     <EditContainer>
       {schoolData.map((data) => {
         return (
-          <FormEditGrades key={data.id} grades={data.grades} id={data.id} />
+          <FormEditGrades
+            key={data.id}
+            grades={data.grades}
+            id={data.id}
+            schoolSubject={data.schoolSubject}
+          />
         )
       })}
     </EditContainer>
