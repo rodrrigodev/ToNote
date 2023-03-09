@@ -21,7 +21,7 @@ interface WarningsData {
   finalDate: Date
 }
 
-interface Grades {
+export interface Grades {
   gradeOne: number
   gradeTwo: number
   gradeThree: number
@@ -109,11 +109,11 @@ export function SchoolDataContextProvider({
     )
   }
 
-  function handleEditSchoolGrades(id: string, x: Grades) {
+  function handleEditSchoolGrades(id: string, grades: Grades) {
     setSchoolData((state) =>
       state.map((data) => {
         if (data.id === id) {
-          return { ...data, grades: x }
+          return { ...data, grades }
         } else {
           return data
         }

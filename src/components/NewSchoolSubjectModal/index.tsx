@@ -16,7 +16,7 @@ const newSchoolSubjectSchema = z.object({
   gradeFour: z.number().max(10).or(z.nan()).or(z.null()),
 })
 
-export type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
+type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
 
 export function NewSchoolSubjectModal() {
   const { handleAddNewSchoolData } = useContext(SchoolDataContext)
