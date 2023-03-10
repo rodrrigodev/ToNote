@@ -26,7 +26,8 @@ export function FormEditGrades({
   id,
   schoolSubject,
 }: GradesProps) {
-  const { schoolData, handleEditSchoolGrades } = useContext(SchoolDataContext)
+  const { schoolData, handleEditSchoolGrades, handleRemoveschoolSubject } =
+    useContext(SchoolDataContext)
 
   const { register, handleSubmit, reset } = useForm<GradesSchema>({
     resolver: zodResolver(gradesSchema),
@@ -99,7 +100,7 @@ export function FormEditGrades({
           />
         </div>
 
-        <DeleteGradeBtn>
+        <DeleteGradeBtn onClick={() => handleRemoveschoolSubject(id)}>
           <Trash size={32} />
         </DeleteGradeBtn>
         <UpdateBtn type="submit">Atualizar</UpdateBtn>
