@@ -5,7 +5,9 @@ export function formatDate(data: string) {
   const month = Number(data.slice(3, 5))
   const year = Number(data.slice(6, 10))
   const convert = new Date(`${month}/${day}/${year}`)
+  const toReturn = `${year},${month},${day}`
+
   const isValid = dayjs(convert).isValid()
 
-  return isValid ? convert : false
+  return isValid ? toReturn : false
 }

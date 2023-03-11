@@ -35,6 +35,8 @@ interface SchoolDataContextType {
   handleUpdateSchoolAbsence: (id: string, quantity: number) => void
   handleEditSchoolGrades: (id: string, grades: Grades) => void
   handleRemoveschoolSubject: (id: string) => void
+  handleNewWarning: (data: WarningsData) => void
+  handleRemoveWarning: (id: string) => void
 }
 
 export const SchoolDataContext = createContext({} as SchoolDataContextType)
@@ -129,6 +131,17 @@ export function SchoolDataContextProvider({
     setSchoolData(filterSchoolSubject)
   }
 
+  function handleNewWarning(data: WarningsData) {
+    setWarningsData((state) => [...state, data])
+  }
+
+  function handleRemoveWarning(id: string) {
+    const filterWarning = warningsData.filter((data) => {
+      return data.id !== id
+    })
+    setWarningsData(filterWarning)
+  }
+
   return (
     <SchoolDataContext.Provider
       value={{
@@ -138,6 +151,8 @@ export function SchoolDataContextProvider({
         handleUpdateSchoolAbsence,
         handleEditSchoolGrades,
         handleRemoveschoolSubject,
+        handleNewWarning,
+        handleRemoveWarning,
       }}
     >
       {children}
