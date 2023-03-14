@@ -34,11 +34,14 @@ export function NewHomeworkModal() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<homeWorkSchema>({
     resolver: zodResolver(homeWorkWarningsSchema),
   })
 
-  console.log(errors)
+  function clearForm() {
+    reset()
+  }
 
   function newWarning(data: homeWorkSchema) {
     const { finalDate, schoolSubject, warning } = data
@@ -54,6 +57,7 @@ export function NewHomeworkModal() {
     }
 
     handleNewWarning(newData)
+    clearForm()
   }
 
   return (

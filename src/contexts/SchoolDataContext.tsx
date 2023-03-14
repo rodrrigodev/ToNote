@@ -13,7 +13,7 @@ export interface SchoolData {
   }
 }
 
-interface WarningsData {
+export interface WarningsData {
   id: string
   schoolSubject: string
   warning: string
@@ -36,7 +36,10 @@ interface SchoolDataContextType {
   handleEditSchoolGrades: (id: string, grades: Grades) => void
   handleRemoveschoolSubject: (id: string) => void
   handleNewWarning: (data: WarningsData) => void
-  handleRemoveWarning: (id: string) => void
+  handleRemoveWarningAndCheckFinished: (
+    id: string,
+    type: 'remove' | 'check',
+  ) => void
 }
 
 export const SchoolDataContext = createContext({} as SchoolDataContextType)
@@ -85,7 +88,7 @@ export function SchoolDataContextProvider({
     },
     {
       id: uuidv4(),
-      schoolSubject: 'Literutura',
+      schoolSubject: 'Literatura',
       warning: 'II Guerra Mundial',
       finalDate: new Date(2023, 4, 5),
       finished: false,
@@ -135,11 +138,30 @@ export function SchoolDataContextProvider({
     setWarningsData((state) => [...state, data])
   }
 
-  function handleRemoveWarning(id: string) {
+  function handleRemoveWarningAndCheckFinished(
+    id: string,
+    type: 'remove' | 'check',
+  ) {
     const filterWarning = warningsData.filter((data) => {
       return data.id !== id
     })
-    setWarningsData(filterWarning)
+
+    if (type === 'remove') {
+      setWarningsData(filterWarning)
+    } else {
+      setWarningsData((state) =>
+        state.map((data) => {
+          if (data.id === id) {
+            return {
+              ...data,
+              finished: !data.finished,
+            }
+          } else {
+            return data
+          }
+        }),
+      )
+    }
   }
 
   return (
@@ -152,7 +174,7 @@ export function SchoolDataContextProvider({
         handleEditSchoolGrades,
         handleRemoveschoolSubject,
         handleNewWarning,
-        handleRemoveWarning,
+        handleRemoveWarningAndCheckFinished,
       }}
     >
       {children}

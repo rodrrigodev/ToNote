@@ -37,7 +37,7 @@ export function FormEditGrades({
     reset({
       gradeOne: null,
       gradeTwo: null,
-      gradeThree,
+      gradeThree: null,
       gradeFour: null,
     })
   }

@@ -83,38 +83,44 @@ export const HomeworkDataContainer = styled.div`
     line-height: 1.75rem;
     transition: all 500ms;
     margin-bottom: 2rem;
+  }
+`
+interface FilterBtnProps {
+  variant?: 'active'
+}
 
-    &:nth-child(1) {
-      background-color: ${(props) => props.theme['blue-dark']};
-
-      &:hover {
-        background-color: ${(props) => props.theme['blue-light']};
-      }
-    }
-
-    &:nth-child(2) {
-      background-color: ${(props) => props.theme['red-dark']};
-
-      &:active {
-        background-color: ${(props) => props.theme['red-light']};
-      }
-      &:hover {
-        background-color: ${(props) => props.theme['red-light']};
-      }
-    }
-
-    &:nth-child(3) {
-      background-color: ${(props) => props.theme['green-dark']};
-
-      &:hover {
-        background-color: ${(props) => props.theme['green-light']};
-      }
-    }
+export const FilterBtn = styled.button<FilterBtnProps>`
+  &:nth-child(1) {
+    background-color: ${(props) => props.theme['blue-dark']};
 
     &:hover {
       background-color: ${(props) => props.theme['blue-light']};
-      transition: all 500ms;
     }
+  }
+
+  &:nth-child(2) {
+    background-color: ${(props) =>
+      props.variant ? props.theme['red-light'] : props.theme['red-dark']};
+
+    &:hover {
+      background-color: ${(props) => props.theme['red-light']};
+    }
+  }
+
+  &:nth-child(3) {
+    background-color: ${(props) =>
+      props.variant === 'active'
+        ? props.theme['green-light']
+        : props.theme['green-dark']};
+
+    &:hover {
+      background-color: ${(props) => props.theme['green-light']};
+    }
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme['blue-light']};
+    transition: all 500ms;
   }
 `
 
