@@ -8,7 +8,7 @@ import {
 } from './styles'
 import * as Dialog from '@radix-ui/react-dialog'
 import { NewHomeworkModal } from './components/NewHomeworkModal'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { UsefulLinks } from './components/UsefulLinks'
 import { HomeworkToFinish } from './components/HomeworkToFinish'
@@ -17,8 +17,17 @@ import { filterWarnings } from '../../utils/filterWarnings'
 export function Homework() {
   const { warningsData } = useContext(SchoolDataContext)
   const [search, setSearch] = useState<string | boolean>('all')
-  const filtered = filterWarnings(warningsData, search)
+  const [itemOffset, setItemOffset] = useState(0)
+  const filtered = filterWarnings(warningsData, search, itemOffset)
+  const pageSize = Array.from(
+    Array(Math.ceil(filtered.originalSize / 5)).keys(),
+  )
 
+  useEffect(() => {
+    setItemOffset(0)
+  }, [search])
+
+  console.log(filtered)
   return (
     <HomeworkContainer>
       <SearchBoxContainer>
@@ -68,9 +77,22 @@ export function Homework() {
             </FilterBtn>
           </div>
 
-          {filtered.map((data) => {
+          {filtered.toShow.map((data) => {
             return <HomeworkToFinish data={data} key={data.id} />
           })}
+
+          <div>
+            {pageSize.map((amount) => {
+              return (
+                <button key={amount} onClick={() => setItemOffset(amount)}>
+                  {amount + 1}
+                </button>
+              )
+            })}
+          </div>
+          {/* const newOffset = (event.selected * itemsPerPage) % filteredData.length */}
+
+          {/* const currentItems = filteredData.slice(itemOffset, endOffset) */}
         </HomeworkDataContainer>
 
         <UsefulLinks />

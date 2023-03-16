@@ -93,6 +93,62 @@ export function SchoolDataContextProvider({
       finalDate: new Date(2023, 4, 5),
       finished: false,
     },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Geografia',
+      warning: 'Guerra na Ucrânia',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Educação Fisica',
+      warning: 'Copa do Mundo Feminina',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Artes',
+      warning: 'Mona Lisa',
+      finalDate: new Date(2023, 1, 6),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'História',
+      warning: 'Cultura Africana',
+      finalDate: new Date(2023, 4, 12),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Química',
+      warning: 'Química dos alimentos',
+      finalDate: new Date(2024, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Química',
+      warning: 'Bomba atômica',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
   ])
 
   function handleAddNewSchoolData(data: SchoolData) {

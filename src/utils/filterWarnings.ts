@@ -1,4 +1,4 @@
-interface FilterWarnings {
+export interface FilterWarnings {
   id: string
   schoolSubject: string
   warning: string
@@ -8,7 +8,11 @@ interface FilterWarnings {
 
 type search = string | boolean
 
-export function filterWarnings(warning: FilterWarnings[], search: search) {
+export function filterWarnings(
+  warning: FilterWarnings[],
+  search: search,
+  size: number,
+) {
   const filtered = warning.filter((data) => {
     if (search === 'all' || !search.toString().length) {
       return data
@@ -26,5 +30,10 @@ export function filterWarnings(warning: FilterWarnings[], search: search) {
     }
   })
 
-  return filtered
+  const toShow = filtered.slice(size * 5, (size + 1) * 5)
+
+  return {
+    originalSize: filtered.length,
+    toShow,
+  }
 }
