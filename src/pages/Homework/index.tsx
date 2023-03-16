@@ -5,6 +5,8 @@ import {
   HomeworkDataAndLinksContainer,
   SearchBoxContainer,
   FilterBtn,
+  Pagination,
+  ButtonPagination,
 } from './styles'
 import * as Dialog from '@radix-ui/react-dialog'
 import { NewHomeworkModal } from './components/NewHomeworkModal'
@@ -27,7 +29,6 @@ export function Homework() {
     setItemOffset(0)
   }, [search])
 
-  console.log(filtered)
   return (
     <HomeworkContainer>
       <SearchBoxContainer>
@@ -81,18 +82,19 @@ export function Homework() {
             return <HomeworkToFinish data={data} key={data.id} />
           })}
 
-          <div>
+          <Pagination aria-label="paginação">
             {pageSize.map((amount) => {
               return (
-                <button key={amount} onClick={() => setItemOffset(amount)}>
+                <ButtonPagination
+                  key={amount}
+                  onClick={() => setItemOffset(amount)}
+                  variant={itemOffset === amount ? 'active' : undefined}
+                >
                   {amount + 1}
-                </button>
+                </ButtonPagination>
               )
             })}
-          </div>
-          {/* const newOffset = (event.selected * itemsPerPage) % filteredData.length */}
-
-          {/* const currentItems = filteredData.slice(itemOffset, endOffset) */}
+          </Pagination>
         </HomeworkDataContainer>
 
         <UsefulLinks />

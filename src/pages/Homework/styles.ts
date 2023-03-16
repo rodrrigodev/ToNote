@@ -123,3 +123,23 @@ export const FilterBtn = styled.button<FilterBtnProps>`
     transition: all 500ms;
   }
 `
+export const Pagination = styled.div`
+  align-self: center;
+  display: flex;
+  gap: 2rem;
+
+  button {
+    margin-bottom: 0;
+    padding: 0rem;
+    background-color: transparent;
+  }
+`
+
+interface ButtonPaginationProps {
+  variant?: 'active'
+}
+
+export const ButtonPagination = styled.button<ButtonPaginationProps>`
+  color: ${(props) =>
+    props.variant === 'active' ? props.theme['blue-light'] : props.theme.white};
+`

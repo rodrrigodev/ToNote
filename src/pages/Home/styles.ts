@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MainContainerBase = styled.main`
   max-width: 90rem;
   width: 90%;
-  margin: 6.5rem auto 0 auto;
+  margin: 6.5rem auto 2rem auto;
 `
 
 export const GradesAndWarningsContainer = styled(MainContainerBase)`

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const HomeworkLinksContainer = styled.aside`
+  align-self: flex-start;
   background-color: ${(props) => props.theme.black};
   padding: 2.5rem;
   border-radius: 6px;
