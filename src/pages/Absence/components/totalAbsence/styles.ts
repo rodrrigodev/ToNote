@@ -8,8 +8,8 @@ export const TotalAbscence = styled.div`
   position: relative;
 
   strong {
-    display: initial;
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   div:not(:last-of-type) {

@@ -1,6 +1,12 @@
 import { createContext, ReactNode, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { toast } from 'react-toastify'
 
+const notify = (type: 'deleted' | 'success') => {
+  type === 'success'
+    ? toast.success('Salvo com sucesso!')
+    : toast.success('Deletado com sucesso!')
+}
 export interface SchoolData {
   id: string
   schoolSubject: string
@@ -429,10 +435,193 @@ export function SchoolDataContextProvider({
       finalDate: new Date(2023, 4, 5),
       finished: false,
     },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Matemática',
+      warning: 'Números Primos',
+      finalDate: new Date(2023, 1, 1),
+      finished: true,
+    },
+    {
+      id: uuidv4(),
+      schoolSubject: 'Inglês',
+      warning: 'Historia do EUA',
+      finalDate: new Date(2023, 4, 5),
+      finished: false,
+    },
   ])
 
   function handleAddNewSchoolData(data: SchoolData) {
     setSchoolData((state) => [...state, data])
+    notify('success')
   }
 
   function handleUpdateSchoolAbsence(id: string, quantity: number) {
@@ -468,6 +657,7 @@ export function SchoolDataContextProvider({
     })
 
     setSchoolData(filterSchoolSubject)
+    notify('deleted')
   }
 
   function handleNewWarning(data: WarningsData) {
@@ -484,6 +674,7 @@ export function SchoolDataContextProvider({
 
     if (type === 'remove') {
       setWarningsData(filterWarning)
+      notify('deleted')
     } else {
       setWarningsData((state) =>
         state.map((data) => {

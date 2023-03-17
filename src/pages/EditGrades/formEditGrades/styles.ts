@@ -63,9 +63,15 @@ export const UpdateBtn = styled.button`
   border-radius: 6px;
   border: 0;
   transition: all 500ms;
+  width: 8rem;
 
   &:hover {
     background-color: ${(props) => props.theme['blue-light']};
     transition: all 500ms;
   }
+`
+
+export const ErrorMessage = styled.p`
+  color: ${(props) => props.theme['red-light']};
+  margin-top: 0.5rem;
 `

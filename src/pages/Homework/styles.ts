@@ -124,15 +124,10 @@ export const FilterBtn = styled.button<FilterBtnProps>`
   }
 `
 export const Pagination = styled.div`
-  align-self: center;
   display: flex;
-  gap: 2rem;
-
-  button {
-    margin-bottom: 0;
-    padding: 0rem;
-    background-color: transparent;
-  }
+  justify-content: center !important;
+  gap: 1rem;
+  flex-wrap: wrap;
 `
 
 interface ButtonPaginationProps {
@@ -142,4 +137,9 @@ interface ButtonPaginationProps {
 export const ButtonPagination = styled.button<ButtonPaginationProps>`
   color: ${(props) =>
     props.variant === 'active' ? props.theme['blue-light'] : props.theme.white};
+  margin-bottom: 0 !important;
+  padding: 0rem !important;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 `

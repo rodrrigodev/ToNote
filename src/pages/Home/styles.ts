@@ -13,6 +13,7 @@ export const GradesAndWarningsContainer = styled(MainContainerBase)`
 `
 
 export const GradesInfoContainer = styled.div`
+  align-self: flex-start;
   background-color: ${(props) => props.theme.black};
   width: 50%;
   padding: 2.5rem;

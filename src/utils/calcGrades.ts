@@ -1,14 +1,14 @@
 export function calcGrades(data: number[]): number {
   let value
-  const x = data.filter((y) => {
+  const filteredGrades = data.filter((y) => {
     return y !== 0
   })
 
-  if (x.length > 0) {
-    value = x.reduce((x, y) => x + y)
+  if (filteredGrades.length > 0) {
+    value = filteredGrades.reduce((x, y) => x + y)
   }
 
-  const convert = value ? value / x.length : 0
+  const convert = value ? value / filteredGrades.length : 0
 
   if (convert.toString().length > 1) {
     if (Number(convert.toString()[2]) > 5) {

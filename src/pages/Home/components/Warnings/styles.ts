@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Pagination } from '../../../Homework/styles'
 
 export const WarningsContainer = styled.div`
   background-color: ${(props) => props.theme.black};
@@ -20,11 +21,7 @@ export const WarningsContainer = styled.div`
   }
 `
 
-interface WarningItensProps {
-  variant: 'good' | 'bad'
-}
-
-export const WarningItens = styled.div<WarningItensProps>`
+export const WarningItens = styled.div`
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.4375rem;
@@ -32,15 +29,21 @@ export const WarningItens = styled.div<WarningItensProps>`
   background-color: ${(props) => props.theme.background};
   padding: 1rem 0.5rem;
   border-radius: 6px;
-  border: 1px solid
-    ${(props) =>
-      props.variant === 'good'
-        ? props.theme['blue-light']
-        : props.theme['red-light']};
+  border: 1px solid ${(props) => props.theme['red-light']};
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
   margin-top: 1.5rem;
+`
+export const PaginationWarnings = styled(Pagination)`
+  justify-content: center;
+  margin-top: 1.5rem;
+
+  button {
+    border: 0;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
 `
