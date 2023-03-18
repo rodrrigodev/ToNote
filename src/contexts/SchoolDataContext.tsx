@@ -1,11 +1,12 @@
-import { createContext, ReactNode, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const notify = (type: 'deleted' | 'success') => {
   type === 'success'
     ? toast.success('Salvo com sucesso!')
-    : toast.success('Deletado com sucesso!')
+    : toast.error('Deletado com sucesso!', {
+        icon: '🗑️',
+      })
 }
 export interface SchoolData {
   id: string
@@ -57,567 +58,17 @@ interface SchoolDataContextProviderProps {
 export function SchoolDataContextProvider({
   children,
 }: SchoolDataContextProviderProps) {
-  const [schoolData, setSchoolData] = useState<SchoolData[]>([
-    {
-      id: uuidv4(),
-      schoolSubject: 'Português',
-      schoolAbsence: 0,
-      grades: { gradeOne: 0, gradeTwo: 4, gradeThree: 8, gradeFour: 0 },
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matematica',
-      schoolAbsence: 0,
-      grades: { gradeOne: 5, gradeTwo: 2, gradeThree: 3, gradeFour: 0 },
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      schoolAbsence: 0,
-      grades: { gradeOne: 5, gradeTwo: 8, gradeThree: 2, gradeFour: 0 },
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      schoolAbsence: 0,
-      grades: { gradeOne: 5, gradeTwo: 5, gradeThree: 10, gradeFour: 0 },
-    },
-  ])
+  const schoolDataIsEmpty = localStorage.getItem('@toNote:schoolDatabase-1.0.1')
+  const schoolDataGet = schoolDataIsEmpty
+    ? JSON.parse(schoolDataIsEmpty)
+    : false
+  const [schoolData, setSchoolData] = useState<SchoolData[]>(
+    schoolDataGet.schoolData ? schoolDataGet.schoolData : [],
+  )
 
-  const [warningsData, setWarningsData] = useState<WarningsData[]>([
-    {
-      id: uuidv4(),
-      schoolSubject: 'Português',
-      warning: 'Literatura na sociedade',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Literatura',
-      warning: 'II Guerra Mundial',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Geografia',
-      warning: 'Guerra na Ucrânia',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Educação Fisica',
-      warning: 'Copa do Mundo Feminina',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Artes',
-      warning: 'Mona Lisa',
-      finalDate: new Date(2023, 1, 6),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'História',
-      warning: 'Cultura Africana',
-      finalDate: new Date(2023, 4, 12),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Química dos alimentos',
-      finalDate: new Date(2024, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Química',
-      warning: 'Bomba atômica',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Matemática',
-      warning: 'Números Primos',
-      finalDate: new Date(2023, 1, 1),
-      finished: true,
-    },
-    {
-      id: uuidv4(),
-      schoolSubject: 'Inglês',
-      warning: 'Historia do EUA',
-      finalDate: new Date(2023, 4, 5),
-      finished: false,
-    },
-  ])
+  const [warningsData, setWarningsData] = useState<WarningsData[]>(
+    schoolDataGet.warningsData ? schoolDataGet.warningsData : [],
+  )
 
   function handleAddNewSchoolData(data: SchoolData) {
     setSchoolData((state) => [...state, data])
@@ -636,6 +87,11 @@ export function SchoolDataContextProvider({
           return data
         }
       }),
+    )
+    toast.success(
+      quantity > 1
+        ? `${quantity} faltas adicionadas com sucesso`
+        : `${quantity} falta adicionada com sucesso`,
     )
   }
 
@@ -662,6 +118,7 @@ export function SchoolDataContextProvider({
 
   function handleNewWarning(data: WarningsData) {
     setWarningsData((state) => [...state, data])
+    notify('success')
   }
 
   function handleRemoveWarningAndCheckFinished(
@@ -690,6 +147,11 @@ export function SchoolDataContextProvider({
       )
     }
   }
+
+  useEffect(() => {
+    const database = JSON.stringify({ schoolData, warningsData })
+    localStorage.setItem('@toNote:schoolDatabase-1.0.1', database)
+  }, [schoolData, warningsData])
 
   return (
     <SchoolDataContext.Provider

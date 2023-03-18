@@ -10,12 +10,12 @@ export function Warnings() {
   const theme = useTheme()
   const { warningsData } = useContext(SchoolDataContext)
   const [itemOffset, setItemOffset] = useState(0)
-  const pageSize = Array.from(Array(Math.ceil(warningsData.length / 4)).keys())
   const toShow = warningsData
     .filter((data) => {
       return !data.finished
     })
     .slice(itemOffset * 4, (itemOffset + 1) * 4)
+  const pageSize = Array.from(Array(Math.ceil(toShow.length / 4)).keys())
 
   return (
     <WarningsContainer>
@@ -31,7 +31,7 @@ export function Warnings() {
             <span>
               Entrega:
               {' ' +
-                intlFormatDistance(data.finalDate, new Date(), {
+                intlFormatDistance(new Date(data.finalDate), new Date(), {
                   locale: 'pt',
                 })}
             </span>
@@ -39,19 +39,21 @@ export function Warnings() {
         )
       })}
 
-      <PaginationWarnings aria-label="paginação">
-        {pageSize.map((amount) => {
-          return (
-            <ButtonPagination
-              key={amount}
-              onClick={() => setItemOffset(amount)}
-              variant={itemOffset === amount ? 'active' : undefined}
-            >
-              {amount + 1}
-            </ButtonPagination>
-          )
-        })}
-      </PaginationWarnings>
+      {pageSize.length > 1 && (
+        <PaginationWarnings aria-label="paginação">
+          {pageSize.map((amount) => {
+            return (
+              <ButtonPagination
+                key={amount}
+                onClick={() => setItemOffset(amount)}
+                variant={itemOffset === amount ? 'active' : undefined}
+              >
+                {amount + 1}
+              </ButtonPagination>
+            )
+          })}
+        </PaginationWarnings>
+      )}
     </WarningsContainer>
   )
 }

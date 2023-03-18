@@ -82,19 +82,21 @@ export function Homework() {
             return <HomeworkToFinish data={data} key={data.id} />
           })}
 
-          <Pagination aria-label="paginação">
-            {pageSize.map((amount) => {
-              return (
-                <ButtonPagination
-                  key={amount}
-                  onClick={() => setItemOffset(amount)}
-                  variant={itemOffset === amount ? 'active' : undefined}
-                >
-                  {amount + 1}
-                </ButtonPagination>
-              )
-            })}
-          </Pagination>
+          {pageSize.length > 1 && (
+            <Pagination aria-label="paginação">
+              {pageSize.map((amount) => {
+                return (
+                  <ButtonPagination
+                    key={amount}
+                    onClick={() => setItemOffset(amount)}
+                    variant={itemOffset === amount ? 'active' : undefined}
+                  >
+                    {amount + 1}
+                  </ButtonPagination>
+                )
+              })}
+            </Pagination>
+          )}
         </HomeworkDataContainer>
 
         <UsefulLinks />

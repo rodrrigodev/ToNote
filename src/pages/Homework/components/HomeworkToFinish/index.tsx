@@ -21,7 +21,7 @@ export function HomeworkToFinish({ data }: HomeworkToFinishProps) {
       <span>{data.schoolSubject}</span>
       <span>{data.warning}</span>
       <span>
-        {intlFormatDistance(data.finalDate, new Date(), {
+        {intlFormatDistance(new Date(data.finalDate), new Date(), {
           locale: 'pt',
         })}
       </span>
