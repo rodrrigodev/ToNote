@@ -13,15 +13,22 @@ import { formatDate } from '../../../../utils/formatDate'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../../../contexts/SchoolDataContext'
 import { v4 as uuidv4 } from 'uuid'
+import { ErrorMessage } from '../../../EditGrades/formEditGrades/styles'
 
 const homeWorkWarningsSchema = z.object({
-  schoolSubject: z.string().min(4, { message: 'Deve ter mínimo 4 caracteres' }),
-  warning: z.string().min(4, { message: 'Deve ter mínimo 4 caracteres' }),
+  schoolSubject: z
+    .string()
+    .min(4, { message: 'A matéria deve ter mínimo 4 caracteres!' }),
+  warning: z
+    .string()
+    .min(4, { message: 'O assunto deve ter mínimo 4 caracteres!' }),
   finalDate: z
     .string()
-    .min(10, { message: 'Deve ter mínimo 10 caracteres' })
-    .max(10, { message: 'Deve ter máximo 10 caracteres' })
-    .refine((val) => formatDate(val), { message: 'Não deve conter letras' }),
+    .min(10, {
+      message: 'A data deve seguir o padrão DD/MM/AAAA ou DD MM AAAA!',
+    })
+    .max(10, { message: 'Deve ter máximo 10 caracteres!' })
+    .refine((val) => formatDate(val), { message: 'Não deve conter letras!' }),
 })
 
 type homeWorkSchema = z.infer<typeof homeWorkWarningsSchema>
@@ -82,6 +89,9 @@ export function NewHomeworkModal() {
 
           <button type="submit">Salvar</button>
         </Form>
+        {errors && <ErrorMessage>{errors.schoolSubject?.message}</ErrorMessage>}
+        {errors && <ErrorMessage>{errors.warning?.message}</ErrorMessage>}
+        {errors && <ErrorMessage>{errors.finalDate?.message}</ErrorMessage>}
       </Content>
     </Dialog.Portal>
   )

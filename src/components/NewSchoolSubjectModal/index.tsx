@@ -7,9 +7,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { v4 as uuidv4 } from 'uuid'
+import { ErrorMessage } from '../../pages/EditGrades/formEditGrades/styles'
 
 const newSchoolSubjectSchema = z.object({
-  schoolSubject: z.string().min(4),
+  schoolSubject: z
+    .string()
+    .min(4, { message: 'Deve ter mínimo 4 caracteres!' }),
   gradeOne: z.number().max(10).or(z.nan()).or(z.null()),
   gradeTwo: z.number().max(10).or(z.nan()).or(z.null()),
   gradeThree: z.number().max(10).or(z.nan()).or(z.null()),
@@ -21,7 +24,12 @@ type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
 export function NewSchoolSubjectModal() {
   const { handleAddNewSchoolData } = useContext(SchoolDataContext)
 
-  const { register, handleSubmit, reset } = useForm<SchoolSubjectSchema>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SchoolSubjectSchema>({
     resolver: zodResolver(newSchoolSubjectSchema),
   })
 
@@ -94,6 +102,8 @@ export function NewSchoolSubjectModal() {
           </div>
           <button type="submit">Salvar</button>
         </form>
+
+        {errors && <ErrorMessage>{errors.schoolSubject?.message}</ErrorMessage>}
       </Content>
     </Dialog.Portal>
   )
