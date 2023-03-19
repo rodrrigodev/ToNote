@@ -7,18 +7,17 @@ export const WarningsContainer = styled.div`
   border-radius: 6px;
   width: 40%;
   align-self: flex-start;
+`
+export const WarningTitle = styled.strong`
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  margin-bottom: 1.5rem;
 
-  strong {
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 1.75rem;
-    margin-bottom: 1.5rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 `
 
 export const WarningItens = styled.div`

@@ -78,9 +78,11 @@ export function Homework() {
             </FilterBtn>
           </div>
 
-          {filtered.toShow.map((data) => {
-            return <HomeworkToFinish data={data} key={data.id} />
-          })}
+          {filtered.toShow.length > 0
+            ? filtered.toShow.map((data) => {
+                return <HomeworkToFinish data={data} key={data.id} />
+              })
+            : 'nada'}
 
           {pageSize.length > 1 && (
             <Pagination aria-label="paginação">

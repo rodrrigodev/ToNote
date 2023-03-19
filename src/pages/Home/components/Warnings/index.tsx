@@ -4,7 +4,12 @@ import { useContext, useState } from 'react'
 import { useTheme } from 'styled-components'
 import { SchoolDataContext } from '../../../../contexts/SchoolDataContext'
 import { ButtonPagination } from '../../../Homework/styles'
-import { PaginationWarnings, WarningItens, WarningsContainer } from './styles'
+import {
+  PaginationWarnings,
+  WarningItens,
+  WarningsContainer,
+  WarningTitle,
+} from './styles'
 
 export function Warnings() {
   const theme = useTheme()
@@ -19,9 +24,9 @@ export function Warnings() {
 
   return (
     <WarningsContainer>
-      <strong>
+      <WarningTitle>
         <Warning size={32} color={theme['red-light']} /> Avisos
-      </strong>
+      </WarningTitle>
 
       {toShow.map((data) => {
         return (

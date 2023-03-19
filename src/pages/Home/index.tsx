@@ -5,9 +5,13 @@ import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { GradesInfo } from './components/GradesInfo/intex'
 import { Warnings } from './components/Warnings'
 import { FireWorks } from './components/FireWorks'
+import { NoWarnings } from './components/NoWarnings'
 
 export function Home() {
-  const { schoolData } = useContext(SchoolDataContext)
+  const { schoolData, warningsData } = useContext(SchoolDataContext)
+  const warningsExists = warningsData.find((data) => {
+    return !data.finished
+  })
 
   return (
     <GradesAndWarningsContainer>
@@ -32,7 +36,7 @@ export function Home() {
         <FireWorks />
       )}
 
-      <Warnings />
+      {warningsExists ? <Warnings /> : <NoWarnings />}
     </GradesAndWarningsContainer>
   )
 }
