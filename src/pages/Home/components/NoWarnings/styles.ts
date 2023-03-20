@@ -7,7 +7,10 @@ export const NoWarningsContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 10rem;
+
+  @media (max-width: 834px) {
+    align-items: center;
+  }
 
   div {
     display: flex;
@@ -20,6 +23,11 @@ export const NoWarningsContainer = styled.div`
       line-height: 1.75rem;
       text-align: center;
       text-transform: uppercase;
+      margin: 8.5rem 0 10rem 0;
+
+      @media (max-width: 425px) {
+        margin: 4.5rem 0 6rem 0;
+      }
     }
   }
 `

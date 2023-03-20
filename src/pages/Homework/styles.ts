@@ -8,14 +8,6 @@ export const HomeworkContainer = styled(MainContainerBase)`
     display: block;
   }
 `
-
-export const HomeworkDataAndLinksContainer = styled.div`
-  margin-top: 3.5rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-`
-
 export const SearchBoxContainer = styled.div`
   width: 70%;
   display: flex;
@@ -55,6 +47,13 @@ export const SearchBoxContainer = styled.div`
       transition: all 500ms;
     }
   }
+`
+
+export const HomeworkDataAndLinksContainer = styled.div`
+  margin-top: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 `
 
 export const HomeworkDataContainer = styled.div`

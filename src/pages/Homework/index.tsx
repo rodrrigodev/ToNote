@@ -37,6 +37,7 @@ export function Homework() {
           placeholder="Busque aqui um trabalho"
           onChange={(event) => setSearch(event.currentTarget.value)}
         />
+
         <button type="button">
           <MagnifyingGlass size={32} />
           Buscar
@@ -82,7 +83,7 @@ export function Homework() {
             ? filtered.toShow.map((data) => {
                 return <HomeworkToFinish data={data} key={data.id} />
               })
-            : 'nada'}
+            : ''}
 
           {pageSize.length > 1 && (
             <Pagination aria-label="paginação">

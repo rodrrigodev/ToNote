@@ -1,5 +1,6 @@
 import { SchoolData } from '../../../../contexts/SchoolDataContext'
 import { calcGrades } from '../../../../utils/calcGrades'
+import { GradesAndSubjectContainer } from '../../styles'
 import { Grades } from './styles'
 
 interface GradesInfoProps {
@@ -39,6 +40,32 @@ export function GradesInfo({ info }: GradesInfoProps) {
           {finalGrade || ''}
         </Grades>
       </div>
+
+      <GradesAndSubjectContainer>
+        <Grades variant="black">{schoolSubject}</Grades>
+
+        <div>
+          <Grades variant={!!gradeOne && gradeOne >= 5 ? 'good' : 'bad'}>
+            {gradeOne || ''}
+          </Grades>
+
+          <Grades variant={!!gradeTwo && gradeTwo >= 5 ? 'good' : 'bad'}>
+            {gradeTwo || ''}
+          </Grades>
+
+          <Grades variant={!!gradeThree && gradeThree >= 5 ? 'good' : 'bad'}>
+            {gradeThree || ''}
+          </Grades>
+
+          <Grades variant={!!gradeFour && gradeFour >= 5 ? 'good' : 'bad'}>
+            {gradeFour || ''}
+          </Grades>
+
+          <Grades variant={!!finalGrade && finalGrade >= 5 ? 'good' : 'bad'}>
+            {finalGrade || ''}
+          </Grades>
+        </div>
+      </GradesAndSubjectContainer>
     </div>
   )
 }

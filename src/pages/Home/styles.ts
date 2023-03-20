@@ -10,6 +10,10 @@ export const GradesAndWarningsContainer = styled(MainContainerBase)`
   display: flex;
   justify-content: space-between;
   gap: 3.75rem;
+
+  @media (max-width: 834px) {
+    flex-direction: column;
+  }
 `
 
 export const GradesInfoContainer = styled.div`
@@ -20,10 +24,18 @@ export const GradesInfoContainer = styled.div`
   border-radius: 6px;
   position: relative;
 
+  @media (max-width: 834px) {
+    width: 100%;
+  }
+
   > div:first-child {
     display: flex;
     justify-content: space-around;
     padding: 0 0.5rem 1.5rem 0.5rem;
+
+    @media (max-width: 554px) {
+      display: none;
+    }
   }
 
   > div:not(:first-child) {
@@ -37,6 +49,12 @@ export const GradesInfoContainer = styled.div`
       display: flex;
       justify-content: space-around;
       padding: 1.0625rem 0.5rem;
+
+      &:nth-child(1) {
+        @media (max-width: 554px) {
+          display: none;
+        }
+      }
     }
   }
 
@@ -59,5 +77,10 @@ export const GradesInfoContainer = styled.div`
     position: absolute;
     right: 0.625rem;
     bottom: 0.625rem;
+  }
+`
+export const GradesAndSubjectContainer = styled.div`
+  span {
+    width: inherit !important;
   }
 `

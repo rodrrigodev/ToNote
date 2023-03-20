@@ -11,6 +11,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from 'react'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const notify = () => {
   toast.success('Nota atualizada!', {
@@ -46,6 +47,8 @@ export function FormEditGrades({
 }: GradesProps) {
   const { schoolData, handleEditSchoolGrades, handleRemoveschoolSubject } =
     useContext(SchoolDataContext)
+
+  const navigate = useNavigate()
 
   const {
     register,
@@ -90,6 +93,16 @@ export function FormEditGrades({
     resetData()
   }
 
+  const removeDataSchool = (id: string) => {
+    console.log(schoolData.length)
+    if (schoolData.length === 1) {
+      navigate('/')
+      handleRemoveschoolSubject(id)
+    } else {
+      handleRemoveschoolSubject(id)
+    }
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit(handleGradesToUpdate)}>
@@ -126,7 +139,7 @@ export function FormEditGrades({
             />
           </div>
 
-          <DeleteGradeBtn onClick={() => handleRemoveschoolSubject(id)}>
+          <DeleteGradeBtn type="button" onClick={() => removeDataSchool(id)}>
             <Trash size={32} />
           </DeleteGradeBtn>
           <UpdateBtn type="submit">Atualizar</UpdateBtn>

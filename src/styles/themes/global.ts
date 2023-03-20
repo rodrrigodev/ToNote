@@ -39,9 +39,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1024px){
     html{
-        font-size: 87.5%;
+        font-size: 80.5%;
     }
 }
+
 `
