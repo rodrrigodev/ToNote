@@ -38,7 +38,7 @@ export const GradesInfoContainer = styled.div`
     }
   }
 
-  > div:not(:first-child) {
+  > div:not(:nth-child(1)):not(:nth-child(2)) {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
@@ -49,6 +49,14 @@ export const GradesInfoContainer = styled.div`
       display: flex;
       justify-content: space-around;
       padding: 1.0625rem 0.5rem;
+
+      &:nth-child(2) {
+        display: none;
+
+        @media (max-width: 554px) {
+          display: flex;
+        }
+      }
 
       &:nth-child(1) {
         @media (max-width: 554px) {
@@ -79,8 +87,18 @@ export const GradesInfoContainer = styled.div`
     bottom: 0.625rem;
   }
 `
-export const GradesAndSubjectContainer = styled.div`
+
+export const ItensDescriptions = styled.div`
+  display: none;
+  justify-content: space-around;
+  padding: 0 0.5rem 1.5rem 0.5rem;
+
   span {
-    width: inherit !important;
+    width: 4rem !important;
+    text-align: center;
+  }
+
+  @media (max-width: 554px) {
+    display: flex;
   }
 `

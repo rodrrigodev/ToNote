@@ -1,7 +1,6 @@
 import { SchoolData } from '../../../../contexts/SchoolDataContext'
 import { calcGrades } from '../../../../utils/calcGrades'
-import { GradesAndSubjectContainer } from '../../styles'
-import { Grades } from './styles'
+import { Grades, GradesAndSubjectContainer } from './styles'
 
 interface GradesInfoProps {
   info: SchoolData
