@@ -15,6 +15,10 @@ export const AbscenceContainer = styled(MainContainerBase)`
     align-items: center;
     gap: 0.5rem;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const AbscenceIncreseDecrease = styled.div`
@@ -25,4 +29,8 @@ export const AbscenceIncreseDecrease = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `

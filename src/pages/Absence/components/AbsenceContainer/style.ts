@@ -4,6 +4,7 @@ export const IncreseAndDecrease = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.white};
   display: flex;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.875rem 1.0625rem;
@@ -18,7 +19,7 @@ export const IncreseAndDecrease = styled.div`
     font-weight: 500;
     font-size: 1.25rem;
     line-height: 1.4375rem;
-    width: 7rem;
+    width: 30%;
   }
 
   input {
@@ -37,6 +38,21 @@ export const IncreseAndDecrease = styled.div`
     display: flex;
     align-items: center;
     gap: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 420px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  button {
+    @media (max-width: 420px) {
+      width: 80%;
+    }
   }
 `
 export const PlusAndMinusBtn = styled.button`

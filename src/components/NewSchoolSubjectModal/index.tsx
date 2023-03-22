@@ -12,7 +12,7 @@ import { ErrorMessage } from '../../pages/EditGrades/formEditGrades/styles'
 const newSchoolSubjectSchema = z.object({
   schoolSubject: z
     .string()
-    .min(4, { message: 'Deve ter mínimo 4 caracteres!' }),
+    .min(4, { message: 'O nome da matéria deve ter no mínimo 4 caracteres!' }),
   gradeOne: z.number().max(10).or(z.nan()).or(z.null()),
   gradeTwo: z.number().max(10).or(z.nan()).or(z.null()),
   gradeThree: z.number().max(10).or(z.nan()).or(z.null()),
