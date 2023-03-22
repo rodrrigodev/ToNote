@@ -21,10 +21,16 @@ export const SearchBoxContainer = styled.div`
     border-radius: 6px;
     width: 100%;
     line-height: 1.75rem;
+
+    &::placeholder {
+      @media (max-width: 425px) {
+        font-size: 1.2rem;
+      }
+    }
   }
 
   button {
-    width: 30%;
+    width: 40%;
     border: 0;
     background-color: transparent;
     color: ${(props) => props.theme['blue-light']};
@@ -46,6 +52,28 @@ export const SearchBoxContainer = styled.div`
       color: ${(props) => props.theme.white};
       transition: all 500ms;
     }
+
+    &:nth-child(3) {
+      display: none;
+
+      @media (max-width: 610px) {
+        display: block;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (max-width: 610px) {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
   }
 `
 
@@ -54,6 +82,10 @@ export const HomeworkDataAndLinksContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `
 
 export const HomeworkDataContainer = styled.div`
@@ -64,11 +96,19 @@ export const HomeworkDataContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 
   div {
     display: flex;
     justify-content: space-between;
+    gap: 0.5rem;
+
+    @media (max-width: 610px) {
+      flex-wrap: wrap;
+    }
   }
 
   button {
@@ -81,7 +121,12 @@ export const HomeworkDataContainer = styled.div`
     border-radius: 6px;
     line-height: 1.75rem;
     transition: all 500ms;
-    margin-bottom: 2rem;
+
+    &:not(:nth-child(4)) {
+      @media (max-width: 610px) {
+        width: 100%;
+      }
+    }
   }
 `
 interface FilterBtnProps {

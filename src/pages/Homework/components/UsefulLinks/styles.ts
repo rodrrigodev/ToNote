@@ -37,4 +37,8 @@ export const HomeworkLinksContainer = styled.aside`
       }
     }
   }
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `

@@ -42,6 +42,10 @@ export function Homework() {
           <MagnifyingGlass size={32} />
           Buscar
         </button>
+
+        <button type="button">
+          <MagnifyingGlass size={32} />
+        </button>
       </SearchBoxContainer>
 
       <HomeworkDataAndLinksContainer>

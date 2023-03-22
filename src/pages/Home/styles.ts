@@ -4,6 +4,14 @@ export const MainContainerBase = styled.main`
   max-width: 90rem;
   width: 90%;
   margin: 6.5rem auto 2rem auto;
+
+  @media (max-width: 834px) {
+    margin-top: 5rem;
+  }
+
+  @media (max-width: 425px) {
+    margin-top: 3rem;
+  }
 `
 
 export const GradesAndWarningsContainer = styled(MainContainerBase)`

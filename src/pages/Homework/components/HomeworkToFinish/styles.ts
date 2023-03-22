@@ -5,6 +5,7 @@ interface HomeworkToFinishListProps {
 }
 
 export const HomeworkToFinishList = styled.div<HomeworkToFinishListProps>`
+  margin-top: 2rem;
   font-size: 1.5rem;
   line-height: 1.75rem;
   font-weight: 500;
@@ -35,14 +36,29 @@ export const HomeworkToFinishList = styled.div<HomeworkToFinishListProps>`
   }
 
   span:nth-child(1) {
-    width: 10rem;
+    width: 25%;
   }
 
   span:nth-child(2) {
-    width: 17rem;
+    width: 50%;
   }
 
   span:nth-child(3) {
-    width: 11rem;
+    width: 25%;
+  }
+
+  @media (max-width: 610px) {
+    span:nth-child(1) {
+      width: 100%;
+    }
+
+    span:nth-child(2) {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    span:nth-child(3) {
+      width: 50%;
+    }
   }
 `

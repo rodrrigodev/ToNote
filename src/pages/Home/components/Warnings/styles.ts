@@ -7,6 +7,10 @@ export const WarningsContainer = styled.div`
   border-radius: 6px;
   width: 40%;
   align-self: flex-start;
+
+  @media (max-width: 834px) {
+    width: 100%;
+  }
 `
 export const WarningTitle = styled.strong`
   font-weight: 500;
@@ -35,6 +39,7 @@ export const WarningItens = styled.div`
   gap: 0.5rem;
   align-items: center;
   margin-top: 1.5rem;
+  /* text-align: center;; */
 `
 export const PaginationWarnings = styled(Pagination)`
   justify-content: center;
