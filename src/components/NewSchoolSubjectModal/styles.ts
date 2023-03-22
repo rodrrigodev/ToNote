@@ -13,7 +13,8 @@ export const Content = styled(Dialog.Content)`
   min-width: 32rem;
   padding: 2.5rem;
   border-radius: 6px;
-  background-color: ${(props) => props.theme.black};
+  /* background-color: ${(props) => props.theme.black}; */
+  background-color: ${(props) => props.theme['blue-dark']};
   position: fixed;
   top: 50%;
   left: 50%;
@@ -45,9 +46,27 @@ export const Content = styled(Dialog.Content)`
     flex-direction: column;
     gap: 1.25rem;
 
+    > input:first-of-type {
+      background-color: red;
+      width: 100%;
+    }
+
     div {
       display: flex;
       gap: 1.25rem;
+
+      @media (max-width: 610px) {
+        flex-direction: column;
+      }
+
+      input {
+        background-color: yellow;
+        width: 50%;
+
+        @media (max-width: 610px) {
+          width: 100%;
+        }
+      }
     }
 
     button {
@@ -70,6 +89,14 @@ export const Content = styled(Dialog.Content)`
         transition: all 500ms;
       }
     }
+  }
+
+  @media (max-width: 425px) {
+    min-width: 24.3rem;
+  }
+
+  @media (max-width: 320px) {
+    min-width: 22rem;
   }
 `
 
