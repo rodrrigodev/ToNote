@@ -16,6 +16,7 @@ export const NoWarningsContainer = styled.div`
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    padding: 8.5rem 0 10rem 0;
 
     p {
       font-weight: 500;
@@ -23,11 +24,10 @@ export const NoWarningsContainer = styled.div`
       line-height: 1.75rem;
       text-align: center;
       text-transform: uppercase;
-      margin: 8.5rem 0 10rem 0;
+    }
 
-      @media (max-width: 425px) {
-        margin: 4.5rem 0 6rem 0;
-      }
+    @media (max-width: 834px) {
+      justify-items: center;
     }
   }
 `
