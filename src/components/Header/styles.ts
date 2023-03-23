@@ -11,6 +11,11 @@ export const HeaderContainer = styled.header`
     width: 90%;
     padding: 4rem 0;
     margin: 0 auto;
+
+    @media (max-width: 630px) {
+      flex-direction: column;
+      padding: 2rem 0 3rem 0;
+    }
   }
 
   img {
@@ -21,7 +26,7 @@ export const HeaderContainer = styled.header`
 
 export const NavContainer = styled.nav`
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 
   a {
     font-size: 2rem;
@@ -37,6 +42,15 @@ export const NavContainer = styled.nav`
       color: ${(props) => props.theme['blue-light']};
       transition: all 500ms;
     }
+
+    @media (max-width: 406px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 630px) {
+    width: 100%;
+    justify-content: space-between;
   }
 `
 
@@ -48,6 +62,7 @@ export const NewSchoolSubjectBtn = styled.button`
   border: 0;
   cursor: pointer;
   transition: all 500ms;
+  width: max-content;
 
   &.active {
     color: ${(props) => props.theme['blue-light']};
@@ -56,5 +71,9 @@ export const NewSchoolSubjectBtn = styled.button`
   &:hover {
     color: ${(props) => props.theme['blue-light']};
     transition: all 500ms;
+  }
+
+  @media (max-width: 406px) {
+    font-size: 1.5rem;
   }
 `
