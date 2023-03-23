@@ -15,12 +15,11 @@ export function Warnings() {
   const theme = useTheme()
   const { warningsData } = useContext(SchoolDataContext)
   const [itemOffset, setItemOffset] = useState(0)
-  const toShow = warningsData
-    .filter((data) => {
-      return !data.finished
-    })
-    .slice(itemOffset * 4, (itemOffset + 1) * 4)
-  const pageSize = Array.from(Array(Math.ceil(toShow.length / 4)).keys())
+  const allWarnings = warningsData.filter((data) => {
+    return !data.finished
+  })
+  const toShow = allWarnings.slice(itemOffset * 4, (itemOffset + 1) * 4)
+  const pageSize = Array.from(Array(Math.ceil(allWarnings.length / 4)).keys())
 
   return (
     <WarningsContainer>

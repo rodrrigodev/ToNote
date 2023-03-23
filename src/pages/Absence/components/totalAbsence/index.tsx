@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../../../contexts/SchoolDataContext'
-import { TotalAbscence, TotalAbscenceCount } from './styles'
+import { TotalAbscence, TotalAbscenceCount, TotalItens } from './styles'
 
 export function TotalAbsence() {
   const { schoolData } = useContext(SchoolDataContext)
@@ -15,11 +15,16 @@ export function TotalAbsence() {
   return (
     <TotalAbscence>
       <strong>Total</strong>
-      <div>
+      <TotalItens>
         {schoolData.map((data) => {
-          return <span key={data.id + 1}>{data.schoolAbsence}</span>
+          return (
+            <div key={data.id + 1}>
+              <span>{data.schoolSubject}</span>
+              <span>{data.schoolAbsence}</span>
+            </div>
+          )
         })}
-      </div>
+      </TotalItens>
 
       <TotalAbscenceCount>
         <span>{totalGrades}</span>

@@ -12,20 +12,27 @@ export const TotalAbscence = styled.div`
     justify-content: center;
   }
 
-  div:not(:last-of-type) {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    border-radius: 6px;
-  }
-
   span {
     text-align: center;
     font-size: 1.5rem;
     line-height: 1.75rem;
     padding: 1.5rem 2.5rem;
     border-radius: 6px;
-    background-color: ${(props) => props.theme['red-dark']};
+
+    &:nth-of-type(1) {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 8rem;
   }
 `
 
@@ -48,6 +55,23 @@ export const TotalAbscenceCount = styled.div`
 
     &:first-of-type {
       color: ${(props) => props.theme['red-light']};
+    }
+  }
+`
+export const TotalItens = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  div {
+    background-color: ${(props) => props.theme['red-dark']};
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+
+    @media (max-width: 768px) {
+      padding: 1rem 0;
+      gap: 1rem;
     }
   }
 `

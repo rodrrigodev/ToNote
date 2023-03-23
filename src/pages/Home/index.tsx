@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { GradesInfo } from './components/GradesInfo/intex'
-import { Warnings } from './components/Warnings'
+import { Warnings } from './components/Warnings/index'
 import { FireWorks } from './components/FireWorks'
 import { NoWarnings } from './components/NoWarnings'
 

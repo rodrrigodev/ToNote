@@ -6,6 +6,10 @@ export const HomeworkContainer = styled(MainContainerBase)`
     content: 'Obs: click em cima do tema do trabalho finalizado!';
     margin-top: 1rem;
     display: block;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
   }
 `
 export const SearchBoxContainer = styled.div`
@@ -93,6 +97,7 @@ export const HomeworkDataContainer = styled.div`
   background-color: ${(props) => props.theme.black};
   padding: 2.5rem;
   border-radius: 6px;
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -126,6 +131,19 @@ export const HomeworkDataContainer = styled.div`
       @media (max-width: 610px) {
         width: 100%;
       }
+    }
+  }
+
+  @media (max-width: 900px) {
+    padding-bottom: 5rem;
+
+    &::after {
+      content: 'Obs: click em cima do tema do trabalho finalizado!';
+      display: block;
+      position: absolute;
+      bottom: 2rem;
+      left: 2.5em;
+      width: 80%;
     }
   }
 `
@@ -172,18 +190,20 @@ export const Pagination = styled.div`
   justify-content: center !important;
   gap: 1rem;
   flex-wrap: wrap;
+  padding: 1.5rem 0 0 0;
 `
 
 interface ButtonPaginationProps {
   variant?: 'active'
 }
 
-export const ButtonPagination = styled.button<ButtonPaginationProps>`
+export const ButtonPagination = styled.span<ButtonPaginationProps>`
   color: ${(props) =>
     props.variant === 'active' ? props.theme['blue-light'] : props.theme.white};
-  margin-bottom: 0 !important;
-  padding: 0rem !important;
-  background-color: transparent;
-  border: 0;
+  margin-bottom: 0;
+  padding: 0rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   cursor: pointer;
+  line-height: 1.75rem;
 `

@@ -5,6 +5,7 @@ export const AbscenceContainer = styled(MainContainerBase)`
   display: flex;
   justify-content: space-between;
   gap: 3.75rem;
+  margin-bottom: 2rem;
 
   strong {
     font-size: 1.5rem;

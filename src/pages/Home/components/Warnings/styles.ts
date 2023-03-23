@@ -39,7 +39,7 @@ export const WarningItens = styled.div`
   gap: 0.5rem;
   align-items: center;
   margin-top: 1.5rem;
-  /* text-align: center;; */
+  text-align: center;
 `
 export const PaginationWarnings = styled(Pagination)`
   justify-content: center;

@@ -14,6 +14,12 @@ export const SchoolGradesToEdit = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
+
+    @media (max-width: 834px) {
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 
   span {
@@ -37,6 +43,14 @@ export const SchoolGradesToEdit = styled.div`
     &::placeholder {
       color: ${(props) => props.theme.white};
     }
+
+    @media (max-width: 834px) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 834px) {
+    flex-wrap: wrap;
   }
 `
 export const DeleteGradeBtn = styled.button`
@@ -51,6 +65,12 @@ export const DeleteGradeBtn = styled.button`
   &:hover {
     color: ${(props) => props.theme['red-light']};
     transition: all 500ms;
+  }
+
+  @media (max-width: 834px) {
+    width: 30%;
+    display: flex;
+    align-items: center;
   }
 `
 
