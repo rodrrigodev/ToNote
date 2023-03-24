@@ -30,6 +30,7 @@ export const AbscenceIncreseDecrease = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 
   @media (max-width: 768px) {
     width: 100%;
