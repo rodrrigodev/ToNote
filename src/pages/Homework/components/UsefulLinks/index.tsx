@@ -21,11 +21,7 @@ export function UsefulLinks() {
           Brasil Escola
         </a>
 
-        <a
-          href="https://www.ebiografia.com/leonardo_vinci/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://www.ebiografia.com/" target="_blank" rel="noreferrer">
           Ebiografia
         </a>
 
