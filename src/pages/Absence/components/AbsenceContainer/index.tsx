@@ -24,7 +24,7 @@ export function AbsenceContainer({ data }: AbsenceContainerProps) {
 
   return (
     <IncreseAndDecrease>
-      <span>{data.schoolSubject}:</span>
+      <span>{data.schoolSubject}</span>
 
       <div>
         <PlusAndMinusBtn
