@@ -9,14 +9,18 @@ import { SchoolDataContext } from '../../contexts/SchoolDataContext'
 import { v4 as uuidv4 } from 'uuid'
 import { ErrorMessage } from '../../pages/EditGrades/formEditGrades/styles'
 
+const zGrade = z
+  .number()
+  .max(10, { message: 'Digite um valor menor ou igual a 10' })
+  .or(z.nan())
+  .or(z.null())
+
 const newSchoolSubjectSchema = z.object({
-  schoolSubject: z
-    .string()
-    .min(4, { message: 'O nome da matéria deve ter no mínimo 4 caracteres!' }),
-  gradeOne: z.number().max(10).or(z.nan()).or(z.null()),
-  gradeTwo: z.number().max(10).or(z.nan()).or(z.null()),
-  gradeThree: z.number().max(10).or(z.nan()).or(z.null()),
-  gradeFour: z.number().max(10).or(z.nan()).or(z.null()),
+  schoolSubject: z.string().min(3),
+  gradeOne: zGrade,
+  gradeTwo: zGrade,
+  gradeThree: zGrade,
+  gradeFour: zGrade,
 })
 
 type SchoolSubjectSchema = z.infer<typeof newSchoolSubjectSchema>
@@ -29,6 +33,7 @@ export function NewSchoolSubjectModal() {
     handleSubmit,
     reset,
     formState: { errors },
+    watch,
   } = useForm<SchoolSubjectSchema>({
     resolver: zodResolver(newSchoolSubjectSchema),
   })
@@ -63,6 +68,9 @@ export function NewSchoolSubjectModal() {
     handleAddNewSchoolData(finalData)
     resetForm()
   }
+
+  const schoolSubject = watch('schoolSubject')
+  const schoolSubjectIsEmpty = schoolSubject ? schoolSubject.length >= 3 : false
 
   return (
     <Dialog.Portal>
@@ -100,10 +108,15 @@ export function NewSchoolSubjectModal() {
               {...register('gradeFour', { valueAsNumber: true })}
             />
           </div>
-          <button type="submit">Salvar</button>
+          <button type="submit" disabled={!schoolSubjectIsEmpty}>
+            Salvar
+          </button>
         </form>
 
-        {errors && <ErrorMessage>{errors.schoolSubject?.message}</ErrorMessage>}
+        {errors && <ErrorMessage>{errors.gradeOne?.message}</ErrorMessage>}
+        {errors && <ErrorMessage>{errors.gradeTwo?.message}</ErrorMessage>}
+        {errors && <ErrorMessage>{errors.gradeThree?.message}</ErrorMessage>}
+        {errors && <ErrorMessage>{errors.gradeFour?.message}</ErrorMessage>}
       </Content>
     </Dialog.Portal>
   )

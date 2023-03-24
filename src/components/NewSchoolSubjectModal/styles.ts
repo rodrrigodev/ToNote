@@ -80,10 +80,14 @@ export const Content = styled(Dialog.Content)`
       line-height: 1.75rem;
       transition: all 500ms;
 
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: ${(props) => props.theme['green-light']};
         color: ${(props) => props.theme.white};
         transition: all 500ms;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
       }
     }
   }
