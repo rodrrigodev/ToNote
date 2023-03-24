@@ -18,17 +18,6 @@ export const TotalAbscence = styled.div`
     line-height: 1.75rem;
     padding: 1.5rem 2.5rem;
     border-radius: 6px;
-
-    &:nth-of-type(1) {
-      display: none;
-
-      @media (max-width: 768px) {
-        display: block;
-      }
-    }
-    @media (max-width: 768px) {
-      padding: 0;
-    }
   }
 
   @media (max-width: 768px) {
@@ -72,6 +61,19 @@ export const TotalItens = styled.div`
     @media (max-width: 768px) {
       padding: 1rem 0;
       gap: 1rem;
+    }
+  }
+
+  span {
+    &:nth-of-type(1):first-of-type {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+    @media (max-width: 768px) {
+      padding: 0;
     }
   }
 `
