@@ -88,10 +88,12 @@ export function NewSchoolSubjectModal() {
 
           <div>
             <input
+              type="number"
               placeholder="1º Nota"
               {...register('gradeOne', { valueAsNumber: true })}
             />
             <input
+              type="number"
               placeholder="2º Nota"
               {...register('gradeTwo', { valueAsNumber: true })}
             />
@@ -99,6 +101,7 @@ export function NewSchoolSubjectModal() {
 
           <div>
             <input
+              type="number"
               placeholder="3º Nota"
               {...register('gradeThree', { valueAsNumber: true })}
             />
